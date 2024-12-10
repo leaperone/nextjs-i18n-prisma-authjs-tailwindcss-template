@@ -10,7 +10,7 @@ import { getLocale } from '@/i18n/server';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: '2SOMEone',
+  title: 'Template',
   description: 'All in one.',
 };
 
