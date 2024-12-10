@@ -1,4 +1,4 @@
-# 2SOMEone-web
+# nextjs-i18n-prisma-authjs-tailwindcss-template
 
 ## Technologies Used
 
@@ -9,6 +9,10 @@
 - [TypeScript](https://www.typescriptlang.org/)
 - [Framer Motion](https://www.framer.com/motion/)
 - [next-themes](https://github.com/pacocoursey/next-themes)
+- [lucide-react](https://lucide.dev/)
+- [prisma](https://www.prisma.io/)
+- [shadcn/ui](https://ui.shadcn.com/)
+- [auth.js](https://authjs.dev/)
 
 ## How to Use
 
@@ -23,6 +27,7 @@
 
 ```bash
 pnpm i
+sh prisma/generate.sh
 ```
 
 ### Run the development server
@@ -53,7 +58,6 @@ src/
 ├── components/ # 组件
 ├── actions/ # 服务端 actions
 ├── prisma/ # prisma 配置, prisma 起初始化脚本
-├── db/ # 数据库方法
 ├── types/ # 类型定义
 ├── hooks/ # 自定义 hooks
 ├── stores/ # 全局状态管理
@@ -68,13 +72,10 @@ src/
 
 ```bash
 docker compose -f docker/docker-compose.yml down --volume
-docker compose -f docker/docker-compose.yml up -d 2someone-db
-
-# 初始化数据库
-make dev
+docker compose -f docker/docker-compose.yml up -d
 ```
 
 ## License
 
 Licensed under the [MIT license](https://github.com/nextui-org/next-app-template/blob/main/LICENSE).
-# nextjs-i18n-prisma-authjs-tailwindcss-template
+
