@@ -1,0 +1,42 @@
+{
+  "hero": {
+    "title": "支持所有主流社交媒体平台",
+    "subtitle": "全球内容创作者的信赖之选",
+    "beta": "Beta 期间完全免费使用",
+    "description": "一站式🎯工具，在{{platform}}上助力🚀你的创作📝之路",
+    "platform": "任何平台",
+    "cta": "设置你的个人资料"
+  },
+  "platforms": {
+    "followers": "{{followers}}",
+    "connect": "在 {{platform}} 上连接 {{followers}} 粉丝，持续增长中。"
+  },
+  "footer": {
+    "slogan": "连接人群，直播生活",
+    "copyright": "© 2024 LEAPERone Inc. 保留所有权利",
+    "sections": {
+      "services": "服务",
+      "support": "支持",
+      "aboutus": "关于我们",
+      "legal": "法律条款"
+    },
+    "navigation": {
+      "services": {
+        "bubblebox": "BubbleBox",
+        "multipost": "MultiPost"
+      },
+      "support": {
+        "pricing": "定价",
+        "userManual": "用户手册（文档）",
+        "devDocs": "LEAPERone 开发文档"
+      },
+      "aboutUs": {
+        "team": "我们的团队"
+      },
+      "legal": {
+        "privacy": "隐私政策",
+        "terms": "服务条款"
+      }
+    }
+  }
+}

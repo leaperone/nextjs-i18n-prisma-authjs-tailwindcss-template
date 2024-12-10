@@ -1,0 +1,24 @@
+import { NextUIProvider } from '@nextui-org/react';
+import { ThemeProvider as NextThemesProvider } from 'next-themes';
+import { SessionProvider } from 'next-auth/react';
+import { auth } from '@/auth';
+import { getLocale } from '@/i18n/server';
+import { LocaleProvider } from '@/i18n/locale-provider';
+
+export async function Providers({ children }: { children: React.ReactNode }) {
+  const session = await auth();
+  const locale = getLocale();
+  return (
+    <SessionProvider session={session}>
+      <NextUIProvider>
+        <LocaleProvider value={locale}>
+          <NextThemesProvider
+            attribute="class"
+            defaultTheme="dark">
+            {children}
+          </NextThemesProvider>
+        </LocaleProvider>
+      </NextUIProvider>
+    </SessionProvider>
+  );
+}

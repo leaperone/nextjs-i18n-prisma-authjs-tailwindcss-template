@@ -1,0 +1,42 @@
+{
+  "hero": {
+    "title": "Available On All Social Media Platforms",
+    "subtitle": "Trusted by content creators worldwide",
+    "beta": "All on the house during beta.",
+    "description": "All in one 🎯 tool that empowers 🚀 your creating 📝 in {{platform}}.",
+    "platform": "any platform",
+    "cta": "Set up your profile"
+  },
+  "platforms": {
+    "followers": "{{followers}}",
+    "connect": "Connect with {{followers}} on {{platform}} and growing fastly."
+  },
+  "footer": {
+    "slogan": "People, Livestreaming, Life",
+    "copyright": "© 2024 LEAPERone Inc. All rights reserved.",
+    "sections": {
+      "services": "Services",
+      "support": "Support",
+      "aboutus": "About Us",
+      "legal": "Legal"
+    },
+    "navigation": {
+      "services": {
+        "bubblebox": "BubbleBox",
+        "multipost": "MultiPost"
+      },
+      "support": {
+        "pricing": "Pricing",
+        "userManual": "User Manual (Documentation)",
+        "devDocs": "LEAPERone Development Docs"
+      },
+      "aboutUs": {
+        "team": "Our Team"
+      },
+      "legal": {
+        "privacy": "Privacy Policy",
+        "terms": "Terms of Service"
+      }
+    }
+  }
+}

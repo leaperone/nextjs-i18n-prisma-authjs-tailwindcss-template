@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+  template-web:
+    image: ${DOCKERHUB}:web-${BRANCH_NAME}-latest-${JOB_TAG}
+    build:
+      context: ..
+      dockerfile: ./docker/Dockerfile
+    args:
+      - NEXT_PUBLIC_TURNSTILE_SITE_KEY=${NEXT_PUBLIC_TURNSTILE_SITE_KEY}

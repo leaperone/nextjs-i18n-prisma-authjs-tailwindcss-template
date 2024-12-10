@@ -1,0 +1,19 @@
+{
+    "recommendations": [
+        "steoates.autoimport",
+        "naumovs.color-highlight",
+        "dbaeumer.vscode-eslint",
+        "maggie.eslint-rules-zh-plugin",
+        "redjue.git-commit-plugin",
+        "antfu.iconify",
+        "xabikos.javascriptsnippets",
+        "esbenp.prettier-vscode",
+        "gruntfuggly.todo-tree",
+        "stylelint.vscode-stylelint",
+        "standard.vscode-standard",
+        "bradlc.vscode-tailwindcss",
+        "suhelmakkad.shadcn-ui",
+        "veroxyle.shadcn-ui-snippets",
+        "prisma.prisma"
+    ]
+}
