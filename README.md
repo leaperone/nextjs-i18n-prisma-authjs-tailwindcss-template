@@ -3,16 +3,16 @@
 ## Technologies Used
 
 - [Next.js 14](https://nextjs.org/docs/getting-started)
-- [NextUI v2](https://nextui.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Tailwind Variants](https://tailwind-variants.org)
 - [TypeScript](https://www.typescriptlang.org/)
-- [Framer Motion](https://www.framer.com/motion/)
-- [next-themes](https://github.com/pacocoursey/next-themes)
-- [lucide-react](https://lucide.dev/)
-- [prisma](https://www.prisma.io/)
-- [shadcn/ui](https://ui.shadcn.com/)
 - [auth.js](https://authjs.dev/)
+- [next-themes](https://github.com/pacocoursey/next-themes)
+- [prisma](https://www.prisma.io/)
+- [heroui](https://heroui.net/)
+- [shadcn/ui](https://ui.shadcn.com/)
+- [Framer Motion](https://www.framer.com/motion/)
+- [lucide-react](https://lucide.dev/)
 
 ## How to Use
 
@@ -37,7 +37,7 @@ pnpm dev
 
 or
 
-NODE_ENV=development pnpm dev 
+NODE_ENV=development pnpm dev
 ```
 
 ### Setup pnpm (optional)
@@ -78,4 +78,3 @@ docker compose -f docker/docker-compose.yml up -d
 ## License
 
 Licensed under the [MIT license](https://github.com/nextui-org/next-app-template/blob/main/LICENSE).
-

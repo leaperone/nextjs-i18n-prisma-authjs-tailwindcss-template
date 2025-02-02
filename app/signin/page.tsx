@@ -1,6 +1,6 @@
 import React from 'react';
 import { signIn } from '@/auth';
-import { Button, Spacer } from '@nextui-org/react';
+import { Button, Spacer } from "@heroui/react";
 import { Icon } from '@iconify/react/dist/iconify.js';
 // import { MailIcon } from 'lucide-react';
 

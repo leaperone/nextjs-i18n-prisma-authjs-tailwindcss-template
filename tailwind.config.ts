@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Config } from 'tailwindcss';
-import { nextui } from '@nextui-org/react';
+import { heroui } from "@heroui/react";
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { default: flattenColorPalette } = require('tailwindcss/lib/util/flattenColorPalette');
@@ -12,7 +12,7 @@ const config = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
-    './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
+    "./node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   prefix: '',
   theme: {
@@ -286,7 +286,7 @@ const config = {
     require('tailwind-scrollbar'),
     require('tailwindcss-animate'),
     require('@tailwindcss/typography'),
-    nextui(),
+    heroui(),
     addVariablesForColors, // 新增颜色变量插件
   ],
 } satisfies Config;

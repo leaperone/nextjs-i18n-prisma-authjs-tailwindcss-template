@@ -1,4 +1,4 @@
-import { NextUIProvider } from '@nextui-org/react';
+import { HeroUIProvider } from "@heroui/react";
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import { SessionProvider } from 'next-auth/react';
 import { auth } from '@/auth';
@@ -10,7 +10,7 @@ export async function Providers({ children }: { children: React.ReactNode }) {
   const locale = getLocale();
   return (
     <SessionProvider session={session}>
-      <NextUIProvider>
+      <HeroUIProvider>
         <LocaleProvider value={locale}>
           <NextThemesProvider
             attribute="class"
@@ -18,7 +18,7 @@ export async function Providers({ children }: { children: React.ReactNode }) {
             {children}
           </NextThemesProvider>
         </LocaleProvider>
-      </NextUIProvider>
+      </HeroUIProvider>
     </SessionProvider>
   );
 }

@@ -3,7 +3,7 @@
 import type { IconProps } from '@iconify/react';
 
 import React from 'react';
-import { Divider, Link } from '@nextui-org/react';
+import { Divider, Link } from "@heroui/react";
 import { Icon } from '@iconify/react';
 import { ThemeSwitcher } from '@/components/ThemeSwitcher';
 import { useTranslation } from '@/i18n/client';

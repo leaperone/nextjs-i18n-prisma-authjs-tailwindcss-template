@@ -1,6 +1,6 @@
 import React from 'react';
 import { signOut } from '@/auth';
-import { Card, CardHeader, CardBody, Button } from '@nextui-org/react';
+import { Card, CardHeader, CardBody, Button } from "@heroui/react";
 
 const SignoutPage = async () => {
   return (

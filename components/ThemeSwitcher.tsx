@@ -1,7 +1,7 @@
 // app/components/ThemeSwitcher.tsx
 'use client';
 import { Sun, Moon } from 'lucide-react';
-import { Button } from '@nextui-org/react';
+import { Button } from "@heroui/react";
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 import { SidebarMenuButton } from './ui/sidebar';

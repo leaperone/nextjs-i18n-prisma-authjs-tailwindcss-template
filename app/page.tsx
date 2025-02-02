@@ -4,7 +4,7 @@ import HeroSection from '@/components/animata/hero/hero-section';
 import ScrollingBanner from '@/components/scrolling-banner';
 import FlipCard from '@/components/animata/card/flip-card';
 import Marquee from '@/components/ui/marquee';
-import { Avatar } from '@nextui-org/react';
+import { Avatar } from "@heroui/react";
 import { createTranslation } from '@/i18n/server';
 
 export default async function HomePage() {

@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { Select, SelectItem } from '@nextui-org/react';
+import { Select, SelectItem } from "@heroui/react";
 import { switchLocaleAction } from '@/i18n/switch-locale';
 import { useTranslation } from '@/i18n/client';
 import { languages } from '@/i18n/settings';

@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
 import '../globals.css';
 import { Providers } from '../providers';
-import { Button } from '@nextui-org/react';
+import { Button } from '@heroui/react';
 import Link from 'next/link';
-import QuestAndGroup from '@/components/SignIn/QuestAndGroup';
 import { ThemeSwitcher } from '@/components/ThemeSwitcher';
 import { Suspense } from 'react';
 import { CircleAlert, FileTextIcon, HomeIcon } from 'lucide-react';
@@ -46,17 +45,15 @@ export default function RootLayout({
               <FileTextIcon />
             </Button>
 
-            <QuestAndGroup />
             <ThemeSwitcher />
           </div>
           <div className="flex w-full max-w-sm flex-row justify-between gap-4 rounded-large bg-background/60 px-8 py-4 shadow-small backdrop-blur-md backdrop-saturate-150 dark:bg-default-100/50">
             <a href="https://2some.ren">
               <CircleAlert size={46} />
-              </a>
+            </a>
             <a href="https://2some.ren">
               <p>你当前正在访问国际站，与国内站数据不互通，点击此处返回国内站。</p>
             </a>
-            
           </div>
         </div>
       </div>

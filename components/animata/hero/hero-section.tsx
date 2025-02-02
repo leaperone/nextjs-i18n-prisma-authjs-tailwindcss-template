@@ -1,4 +1,4 @@
-import { Button, Chip } from '@nextui-org/react';
+import { Button, Chip } from "@heroui/react";
 import { cn } from '@/lib/utils';
 import { CheckIcon, LayoutDashboardIcon } from 'lucide-react';
 import Link from 'next/link';
