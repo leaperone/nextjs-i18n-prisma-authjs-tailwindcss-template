@@ -1,78 +1,109 @@
 # nextjs-i18n-prisma-authjs-tailwindcss-template
 
+[中文文档](./README.zh-CN.md)
+
 ## Technologies Used
 
-- [Next.js 14](https://nextjs.org/docs/getting-started)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Tailwind Variants](https://tailwind-variants.org)
-- [TypeScript](https://www.typescriptlang.org/)
-- [auth.js](https://authjs.dev/)
-- [next-themes](https://github.com/pacocoursey/next-themes)
-- [prisma](https://www.prisma.io/)
-- [heroui](https://heroui.net/)
-- [shadcn/ui](https://ui.shadcn.com/)
-- [Framer Motion](https://www.framer.com/motion/)
-- [lucide-react](https://lucide.dev/)
+- [Next.js 14](https://nextjs.org/docs/getting-started) - React Framework
+- [Tailwind CSS](https://tailwindcss.com/) - CSS Framework
+- [Tailwind Variants](https://tailwind-variants.org) - Tailwind Component Variants
+- [TypeScript](https://www.typescriptlang.org/) - JavaScript Superset
+- [auth.js](https://authjs.dev/) - Authentication Solution
+- [next-themes](https://github.com/pacocoursey/next-themes) - Theme Switching
+- [prisma](https://www.prisma.io/) - Database ORM
+- [heroui](https://heroui.net/) - UI Components
+- [shadcn/ui](https://ui.shadcn.com/) - UI Components
+- [Framer Motion](https://www.framer.com/motion/) - Animation Library
+- [lucide-react](https://lucide.dev/) - Icon Library
 
-## How to Use
+## Getting Started
 
-### 配置
+### Configuration
 
-必读[配置教程](https://juejin.cn/post/7359203560166768650)
+Required reading: [Configuration Tutorial](https://juejin.cn/post/7359203560166768650)
 
-- 如何使用 czg 生成标准的 git commit message
-- 如何使用 standard-version [生成 changelog 和 tag](https://juejin.cn/post/7359203560166768650#heading-40)
+- How to use czg to generate standardized git commit messages
+- How to use standard-version to [generate changelog and tags](https://juejin.cn/post/7359203560166768650#heading-40)
 
-### Install dependencies
+### Development Environment Setup
+
+#### Using Dev Container (Recommended)
+
+1. Modify the template name in .devcontainer/devcontainer.json (including postCreateCommand), you can add custom VSCode extensions
+2. If you modified workspaceFolder in .devcontainer/devcontainer.json, update the working directory in .devcontainer/Dockerfile accordingly
+3. Commit and push these changes, then reopen in container using VSCode's Remote-Containers extension (@command:remote-containers.reopenInContainer)
+4. Wait for the development container setup to complete
+   * If your repository is private, activate git agent using `git add` before opening the dev container
+5. Run `pnpm dev` to check if the website runs properly
+
+#### Manual Setup
 
 ```bash
 pnpm i
 sh prisma/generate.sh
 ```
 
-### Run the development server
+Run the development server:
 
 ```bash
 pnpm dev
 
-or
-
+# Or specify environment
 NODE_ENV=development pnpm dev
 ```
 
-### Setup pnpm (optional)
+#### pnpm Configuration (Optional)
 
-If you are using `pnpm`, you need to add the following code to your `.npmrc` file:
+If using pnpm, add to .npmrc file:
 
 ```bash
 public-hoist-pattern[]=*@nextui-org/*
 ```
 
-After modifying the `.npmrc` file, you need to run `pnpm install` again to ensure that the dependencies are installed correctly.
+Run `pnpm install` again after modification.
 
-## 项目结构
+### Auth.js Setup
 
-```bash
-src/
-├── app/ # 页面和路由，API Route
-├── components/ # 组件
-├── actions/ # 服务端 actions
-├── prisma/ # prisma 配置, prisma 起初始化脚本
-├── types/ # 类型定义
-├── hooks/ # 自定义 hooks
-├── stores/ # 全局状态管理
-├── lib/ # 库, 自定义函数
-├── utils/ # 工具函数
-├── scripts/ # 脚本
-├── public/ # 静态资源
+For beginners, please check https://authjs.dev/
 
-```
+1. Check the auth.ts file
+2. Configure keys in .env.local following the [Github Provider Setup Guide](https://authjs.dev/getting-started/authentication/oauth?framework=next-js)
 
-## Dev Database
+### Prisma Setup
+
+For beginners, please check https://www.prisma.io/docs
+
+1. All Prisma files are in the ./prisma directory
+2. Rename prisma schema if needed (update lib/db.ts and action/* accordingly)
+3. Set database connection in .env and .env.local
+
+### Development Database
 
 ```bash
 docker compose -f docker/docker-compose.yml down --volume
 docker compose -f docker/docker-compose.yml up -d
+```
+
+### Vercel Deployment
+
+1. Check .github/workflows/deploy.yml ([Reference](https://github.com/amondnet/vercel-action?tab=readme-ov-file#how-to-use))
+2. Set necessary secrets in Github repository's Actions secrets
+
+## Project Structure
+
+```bash
+src/
+├── app/ # Pages and routes, API Routes
+├── components/ # Components
+├── actions/ # Server actions
+├── prisma/ # Prisma config, initialization scripts
+├── types/ # Type definitions
+├── hooks/ # Custom hooks
+├── stores/ # Global state management
+├── lib/ # Libraries, custom functions
+├── utils/ # Utility functions
+├── scripts/ # Scripts
+├── public/ # Static assets
 ```
 
 ## License
