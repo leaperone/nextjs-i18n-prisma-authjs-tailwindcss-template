@@ -1,6 +1,6 @@
 import HomePageHeader from '@/components/HomePage/Header';
 import FooterWithColumns from '@/components/HomePage/FooterWithColumns';
-import HeroSection from '@/components/animata/hero/hero-section';
+import HeroSection from '@/app/(home)/hero-section';
 import ScrollingBanner from '@/components/scrolling-banner';
 import FlipCard from '@/components/animata/card/flip-card';
 import Marquee from '@/components/ui/marquee';
