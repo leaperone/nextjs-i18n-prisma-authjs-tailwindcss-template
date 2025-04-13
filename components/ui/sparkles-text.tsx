@@ -23,7 +23,8 @@ interface SparklesTextProps {
    * @description
    * The component to be rendered as the text
    * */
-  as?: ReactElement;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  as?: ReactElement<any>;
 
   /**
    * @default ""

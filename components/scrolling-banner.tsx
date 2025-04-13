@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import type { ScrollShadowProps } from "@heroui/react";
@@ -97,7 +98,7 @@ const ScrollingBanner = React.forwardRef<HTMLDivElement, ScrollingBannerProps>(
             '[animation-direction:reverse]': isReverse,
             'hover:[animation-play-state:paused]': shouldPauseOnHover,
           })}>
-          {React.Children.map(children, (child) => React.cloneElement(child as unknown as React.ReactElement))}
+          {React.Children.map(children, (child) => React.cloneElement(child as unknown as React.ReactElement<any>))}
         </div>
       </ScrollShadow>
     );
