@@ -4,9 +4,7 @@ import { PrismaPlugin } from '@prisma/nextjs-monorepo-workaround-plugin';
 const nextConfig = {
   output: 'standalone',
   images: {
-    remotePatterns: [
-      { protocol: 'https', hostname: 'nextui.org' },
-    ],
+    remotePatterns: [{ protocol: 'https', hostname: 'nextui.org' }],
   },
   webpack: (config, { isServer }) => {
     if (isServer) {
@@ -25,11 +23,7 @@ const nextConfig = {
       ],
     },
   ],
-  experimental: { 
-    serverComponentsExternalPackages: [
-      // '@aws-sdk/client-s3', '@aws-sdk/s3-request-presigner' // TODO: Add this back when we have a way to handle the S3 bucket
-    ] 
-  },
+  // serverExternalPackages: ['@aws-sdk/client-s3', '@aws-sdk/s3-request-presigner'], // TODO: Add this back when we have a way to handle the S3 bucket
 };
 
 export default nextConfig;
