@@ -7,7 +7,7 @@ import { LocaleProvider } from '@/i18n/locale-provider';
 
 export async function Providers({ children }: { children: React.ReactNode }) {
   const session = await auth();
-  const locale = getLocale();
+  const locale = await getLocale();
   return (
     <SessionProvider session={session}>
       <HeroUIProvider>

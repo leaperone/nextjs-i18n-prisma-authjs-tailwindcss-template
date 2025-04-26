@@ -14,12 +14,12 @@ export const metadata: Metadata = {
   description: 'All in one.',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const locale = getLocale();
+  const locale = await getLocale();
   return (
     <html lang={locale}>
       <body className={inter.className}>
