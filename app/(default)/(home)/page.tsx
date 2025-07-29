@@ -1,22 +1,18 @@
-import HomePageHeader from '@/components/HomePage/Header';
-import FooterWithColumns from '@/components/HomePage/FooterWithColumns';
-import HeroSection from '@/app/(home)/hero-section';
+import HeroSection from './hero-section';
 import ScrollingBanner from '@/components/scrolling-banner';
 import FlipCard from '@/components/animata/card/flip-card';
 import Marquee from '@/components/ui/marquee';
-import { Avatar } from "@heroui/react";
+import { Avatar } from '@heroui/react';
 import { createTranslation } from '@/i18n/server';
 
 export default async function HomePage() {
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground">
-      <HomePageHeader />
       <main className="grow">
         <HeroSection className="h-[65dvh]" />
         <AvailableOnPlatforms />
         <UserRecommendations />
       </main>
-      <FooterWithColumns />
     </div>
   );
 }

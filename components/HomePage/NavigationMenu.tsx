@@ -1,120 +1,144 @@
 'use client';
 
-import * as React from 'react';
-import { cn } from '@/lib/utils';
+import { Button, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Link as HeroLink } from '@heroui/react';
 import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
-} from '@/components/ui/navigation-menu';
-import Link from 'next/link';
-import { LayoutDashboard, MoreHorizontal, Wrench, InboxIcon, MenuIcon } from 'lucide-react';
+  LayoutDashboard,
+  MessageSquare,
+  Gift,
+  Tag,
+  FileText,
+  Wrench,
+  MenuIcon,
+  InboxIcon,
+  RssIcon,
+} from 'lucide-react';
 
 const dashboardItems: { title: string; icon: React.ElementType; href: string; description: string }[] = [
   {
-    title: 'Dashboard',
+    title: '泡泡树洞',
     icon: InboxIcon,
-    href: '/dashboard',
-    description: 'All here',
+    href: '/dashboard/bubblebox',
+    description: '所有收稿，都在这里',
   },
-];
-
-const moreItems: { title: string; icon: React.ElementType; href: string; description: string }[] = [
   {
-    title: 'Tools',
+    title: '僚机',
+    icon: MessageSquare,
+    href: '/dashboard/danmuku',
+    description: '弹幕、SC、礼物、舰长、用户行为等数据',
+  },
+  {
+    title: '礼兮',
+    icon: Gift,
+    href: '/dashboard/oh-gift',
+    description: 'AIO 粉丝维护系统',
+  },
+  {
+    title: '小工具',
     icon: Wrench,
     href: '/tools',
-    description: 'Your best toolbox',
+    description: '你最好的工具箱',
   },
 ];
 
 export function HomePageNavigationMenu() {
   return (
-    <NavigationMenu>
-      <NavigationMenuList>
-        <NavigationMenuItem>
-          <Link
-            href="/dashboard"
-            legacyBehavior
-            passHref>
-            <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), 'group')}>
-              <LayoutDashboard className="mr-2 size-4 transition-transform" />
-              Dashboard
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-        <MenuItem
-          title="Features"
-          icon={MenuIcon}
-          items={dashboardItems}
-        />
-        <MenuItem
-          title="More"
-          icon={MoreHorizontal}
-          items={moreItems}
-        />
-      </NavigationMenuList>
-    </NavigationMenu>
-  );
-}
+    <div className="flex items-center gap-4">
+      <Button
+        as={HeroLink}
+        href="/dashboard"
+        variant="light"
+        startContent={<LayoutDashboard className="size-4" />}>
+        仪表盘
+      </Button>
 
-function MenuItem({
-  title,
-  icon: Icon,
-  items,
-}: {
-  title: string;
-  icon: React.ElementType;
-  items: { title: string; icon: React.ElementType; href: string; description: string }[];
-}) {
-  return (
-    <NavigationMenuItem>
-      <NavigationMenuTrigger className="group">
-        <Icon className="mr-2 size-4 transition-transform" />
-        {title}
-      </NavigationMenuTrigger>
-      <NavigationMenuContent>
-        <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-          {items.map((item) => (
-            <ListItem
+      <Dropdown>
+        <DropdownTrigger>
+          <Button
+            disableRipple
+            variant="light"
+            endContent={
+              <ChevronDown
+                fill="currentColor"
+                size={16}
+              />
+            }
+            startContent={<MenuIcon className="size-4" />}>
+            功能
+          </Button>
+        </DropdownTrigger>
+        <DropdownMenu
+          aria-label="功能菜单"
+          itemClasses={{
+            base: 'gap-4 text-foreground text-lg font-bold',
+            description: 'text-foreground/50 text-xs font-light',
+          }}>
+          {dashboardItems.map((item) => (
+            <DropdownItem
               key={item.title}
-              {...item}
-            />
+              description={item.description}
+              startContent={<item.icon className="text-inherit" />}
+              as={HeroLink}
+              href={item.href}>
+              {item.title}
+            </DropdownItem>
           ))}
-        </ul>
-      </NavigationMenuContent>
-    </NavigationMenuItem>
+        </DropdownMenu>
+      </Dropdown>
+
+      <Button
+        as={HeroLink}
+        href="https://mc1cz6k4he.feishu.cn/wiki/VEBmwYV7hi5UTqk71DucmARinVd"
+        target="_blank"
+        variant="light"
+        startContent={<RssIcon className="size-4" />}>
+        博客
+      </Button>
+
+      <Button
+        as={HeroLink}
+        href="https://doc.2some.ren"
+        target="_blank"
+        variant="light"
+        startContent={<FileText className="size-4" />}>
+        文档
+      </Button>
+
+      <Button
+        as={HeroLink}
+        href="/pricing"
+        variant="light"
+        startContent={<Tag className="size-4" />}>
+        定价
+      </Button>
+    </div>
   );
 }
 
-const ListItem = React.forwardRef<
-  React.ElementRef<'a'>,
-  React.ComponentPropsWithoutRef<'a'> & { icon: React.ElementType; description: string }
->(({ className, title, description, icon: Icon, ...props }, ref) => {
+interface IconProps {
+  fill?: string;
+  size?: number;
+  height?: number;
+  width?: number;
+  className?: string;
+}
+
+const ChevronDown: React.FC<IconProps> = ({ fill, size, height, width, ...props }) => {
   return (
-    <li>
-      <NavigationMenuLink asChild>
-        <a
-          ref={ref}
-          className={cn(
-            'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-all duration-200 ease-in-out hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground group hover:scale-105',
-            className,
-          )}
-          {...props}>
-          <div className="flex items-center space-x-2">
-            <Icon className="size-5 transition-transform group-hover:scale-110" />
-            <div className="text-sm font-medium leading-none transition-colors">{title}</div>
-          </div>
-          <p className="mt-2 line-clamp-2 text-sm leading-snug text-muted-foreground transition-colors">
-            {description}
-          </p>
-        </a>
-      </NavigationMenuLink>
-    </li>
+    <svg
+      fill="none"
+      height={size || height || 24}
+      viewBox="0 0 24 24"
+      width={size || width || 24}
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}>
+      <path
+        d="m19.92 8.95-6.52 6.52c-.77.77-2.03.77-2.8 0L4.08 8.95"
+        stroke={fill}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeMiterlimit={10}
+        strokeWidth={1.5}
+      />
+    </svg>
   );
-});
-ListItem.displayName = 'ListItem';
+};

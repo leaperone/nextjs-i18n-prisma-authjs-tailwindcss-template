@@ -1,0 +1,21 @@
+---
+description:  Breadcrumb Navigation
+alwaysApply: false
+---
+# Breadcrumb Navigation Component Guide
+
+See [docs/面包屑导航组件设计与使用文档.md](mdc:docs/面包屑导航组件设计与使用文档.md) for:
+- General-purpose and oh-gift-specific breadcrumb component architecture
+- Usage patterns and props for OhGiftBreadcrumb
+- Layout and design best practices for navigation
+- File locations for all related components and usage pages
+
+Use this doc as the canonical reference for implementing or modifying breadcrumb navigation in the project.# Breadcrumb Navigation Component Guide
+
+See [docs/面包屑导航组件设计与使用文档.md](mdc:docs/面包屑导航组件设计与使用文档.md) for:
+- General-purpose and oh-gift-specific breadcrumb component architecture
+- Usage patterns and props for OhGiftBreadcrumb
+- Layout and design best practices for navigation
+- File locations for all related components and usage pages
+
+Use this doc as the canonical reference for implementing or modifying breadcrumb navigation in the project.
