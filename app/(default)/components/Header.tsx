@@ -23,32 +23,32 @@ import { ThemeSwitcher } from '@/components/ThemeSwitcher';
 
 const dashboardItems: { title: string; icon: React.ElementType; href: string; description: string }[] = [
   {
-    title: '工具',
+    title: 'Tools',
     icon: Wrench,
     href: '/tools',
-    description: '你最好的工具箱',
+    description: 'Your best toolbox',
   },
   {
-    title: '文档',
+    title: 'Docs',
     icon: FileText,
     href: '/docs',
-    description: '项目文档和指南',
+    description: 'Project documentation and guides',
   },
 ];
 
 const menuItems = [
   {
-    title: '仪表盘',
+    title: 'Dashboard',
     icon: LayoutDashboard,
     href: '/dashboard',
   },
   {
-    title: '工具',
+    title: 'Tools',
     icon: Wrench,
     href: '/tools',
   },
   {
-    title: '文档',
+    title: 'Docs',
     icon: FileText,
     href: '/docs',
   },
@@ -64,7 +64,7 @@ export default function Header() {
       onMenuOpenChange={setIsMenuOpen}>
       <NavbarContent>
         <NavbarMenuToggle
-          aria-label={isMenuOpen ? '关闭菜单' : '打开菜单'}
+          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
           className="sm:hidden"
         />
         <NavbarBrand>
@@ -83,7 +83,7 @@ export default function Header() {
             href="/dashboard"
             className="flex items-center gap-2 text-xs">
             <LayoutDashboard className="size-4" />
-            仪表盘
+            Dashboard
           </Link>
         </NavbarItem>
 
@@ -96,11 +96,11 @@ export default function Header() {
                 size="sm"
                 endContent={<ChevronDown className="size-4" />}
                 startContent={<MenuIcon className="size-4" />}>
-                功能
+                Features
               </Button>
             </DropdownTrigger>
             <DropdownMenu
-              aria-label="功能菜单"
+              aria-label="Features menu"
               itemClasses={{
                 base: 'gap-4 text-foreground text-lg font-bold',
                 description: 'text-foreground/50 text-xs font-light',
@@ -125,7 +125,7 @@ export default function Header() {
             href="/about"
             className="flex items-center gap-2 text-xs">
             <FileText className="size-4" />
-            关于
+            About
           </Link>
         </NavbarItem>
       </NavbarContent>
@@ -163,7 +163,7 @@ export default function Header() {
             size="lg">
             <div className="flex items-center gap-2">
               <FileText className="size-5" />
-              <span>关于</span>
+              <span>About</span>
             </div>
           </Link>
         </NavbarMenuItem>
@@ -187,7 +187,7 @@ function LoginUserBtn() {
       as={Link}
       href="/signin"
       size="sm">
-      登录
+      Sign In
     </Button>
   );
 }
@@ -199,7 +199,7 @@ function LoginUserBtnMobile() {
       color="primary"
       href="/signin"
       size="lg">
-      登录
+      Sign In
     </Link>
   );
 }

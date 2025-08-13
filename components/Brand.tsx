@@ -17,7 +17,7 @@ export const BrandName = ({ className }: { className?: string }) => {
         'bg-gradient-to-br from-blue-300 to-pink-600 bg-clip-text font-semibold text-transparent dark:from-blue-400 dark:to-pink-400',
         className,
       )}>
-      2SOMEren
+      LEAPERone Template
     </span>
   );
 };

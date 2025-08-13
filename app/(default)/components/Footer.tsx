@@ -13,31 +13,31 @@ type SocialIconProps = Omit<IconProps, 'icon'>;
 const footerNavigation = {
   services: [
     { name: '2SOMEone', href: 'https://2some.one' },
-    { name: 'MultiPost 多平台运营工具', href: 'https://multipost.app' },
-    { name: '礼兮', href: '/dashboard/oh-gift' },
+    { name: 'MultiPost Multi-platform Operations Tool', href: 'https://multipost.app' },
+    { name: 'LiXi', href: '/dashboard/oh-gift' },
     { name: 'Voite', href: 'https://voite.2some.one' },
     { name: 'FameDayOne', href: 'https://fameday.one' },
   ],
   supportOptions: [
-    { name: '定价', href: '/pricing' },
-    { name: '用户手册（文档）', href: 'https://mc1cz6k4he.feishu.cn/wiki/EcU8wdd00iXieQkIQbTctNcMnFc' },
-    { name: 'LEAPERone Doc 开发文档', href: 'https://doc.leaper.one' },
-    { name: '直播服务商名录', href: 'https://mc1cz6k4he.feishu.cn/wiki/space/7460543293223616540' },
-    { name: '服务可用状态', href: 'https://status.2some.ren' },
+    { name: 'Pricing', href: '/pricing' },
+    { name: 'User Manual (Docs)', href: 'https://mc1cz6k4he.feishu.cn/wiki/EcU8wdd00iXieQkIQbTctNcMnFc' },
+    { name: 'LEAPERone Doc Development Docs', href: 'https://doc.leaper.one' },
+    { name: 'Live Service Provider Directory', href: 'https://mc1cz6k4he.feishu.cn/wiki/space/7460543293223616540' },
+    { name: 'Service Status', href: 'https://status.2some.ren' },
   ],
   aboutUs: [
-    { name: '我们的团队', href: 'http://leaper.one' },
-    // { name: '博客（Live2SOMEone）', href: 'https://live.2some.one' },
+    { name: 'Our Team', href: 'http://leaper.one' },
+    // { name: 'Blog (Live2SOMEone)', href: 'https://live.2some.one' },
     // { name: 'Latest News', href: '#' },
     // { name: 'Career Opportunities', href: '#' },
     // { name: 'Media Enquiries', href: '#' },
     // { name: 'Collaborations', href: '#' },
   ],
   legal: [
-    // { name: '隐私政策', href: 'https://mc1cz6k4he.feishu.cn/wiki/XQxBwIqxOidbP8kdRfscsjsYnMd' },
-    // { name: '用户协议', href: 'https://mc1cz6k4he.feishu.cn/wiki/JcXHwMqzCis1xekykN3cFVYPn4b' },
-    { name: '隐私政策', href: '/legal/privacy' },
-    { name: '用户协议', href: '/legal/terms' },
+    // { name: 'Privacy Policy', href: 'https://mc1cz6k4he.feishu.cn/wiki/XQxBwIqxOidbP8kdRfscsjsYnMd' },
+    // { name: 'Terms of Service', href: 'https://mc1cz6k4he.feishu.cn/wiki/JcXHwMqzCis1xekykN3cFVYPn4b' },
+    { name: 'Privacy Policy', href: '/legal/privacy' },
+    { name: 'Terms of Service', href: '/legal/terms' },
   ],
   social: [
     {
@@ -125,7 +125,7 @@ export default function Footer() {
               <BrandLogo />
               <BrandName />
             </div>
-            <p className="text-small text-default-500">人、直播、生活</p>
+            <p className="text-small text-default-500">People, Live Streaming, Life</p>
             {/* TODO: social links */}
             {/* <div className="flex space-x-6">
               {footerNavigation.social.map((item) => (
@@ -145,20 +145,20 @@ export default function Footer() {
           </div>
           <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
             <div className="md:grid md:grid-cols-2 md:gap-8">
-              <div>{renderList({ title: '服务', items: footerNavigation.services })}</div>
+              <div>{renderList({ title: 'Services', items: footerNavigation.services })}</div>
               <div className="mt-10 md:mt-0">
-                {renderList({ title: '支持', items: footerNavigation.supportOptions })}
+                {renderList({ title: 'Support', items: footerNavigation.supportOptions })}
               </div>
             </div>
             <div className="md:grid md:grid-cols-2 md:gap-8">
-              <div>{renderList({ title: '关于我们', items: footerNavigation.aboutUs })}</div>
-              <div className="mt-10 md:mt-0">{renderList({ title: '合规', items: footerNavigation.legal })}</div>
+              <div>{renderList({ title: 'About Us', items: footerNavigation.aboutUs })}</div>
+              <div className="mt-10 md:mt-0">{renderList({ title: 'Legal', items: footerNavigation.legal })}</div>
             </div>
           </div>
         </div>
         <Divider className="mt-16 sm:mt-20 lg:mt-24" />
         <div className="flex flex-wrap items-center justify-between gap-2 pt-8">
-          <p className="text-small text-default-400">&copy; 2025 LEAPERone Inc. 保留所有权利。</p>
+          <p className="text-small text-default-400">&copy; 2025 LEAPERone Inc. All rights reserved.</p>
           {beiAnLinks.map((link) => (
             <Link
               key={link.label}
