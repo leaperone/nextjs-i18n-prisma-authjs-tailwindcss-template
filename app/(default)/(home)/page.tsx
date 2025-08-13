@@ -2,8 +2,9 @@ import HeroSection from './hero-section';
 import ScrollingBanner from '@/components/scrolling-banner';
 import FlipCard from '@/components/animata/card/flip-card';
 import Marquee from '@/components/ui/marquee';
-import { Avatar } from '@heroui/react';
+import { Avatar, Card, CardBody, CardHeader } from '@heroui/react';
 import { createTranslation } from '@/i18n/server';
+import { ExternalLink, Globe, Users, Zap, Shield, BookOpen } from 'lucide-react';
 
 export default async function HomePage() {
   return (
@@ -11,6 +12,7 @@ export default async function HomePage() {
       <main className="grow">
         <HeroSection className="h-[65dvh]" />
         <AvailableOnPlatforms />
+        <ProductShowcase />
         <UserRecommendations />
       </main>
     </div>
@@ -52,6 +54,113 @@ const AvailableOnPlatforms = async () => {
             />
           ))}
         </ScrollingBanner>
+      </div>
+    </section>
+  );
+};
+
+const ProductShowcase = async () => {
+  const PRODUCTS = [
+    {
+      name: '2SOMEone',
+      description: 'Professional live streaming platform for content creators and streamers',
+      href: 'https://2some.one',
+      icon: Users,
+      features: ['Live Streaming', 'Content Creation', 'Community Management'],
+      color: 'from-blue-500 to-cyan-500',
+    },
+    {
+      name: '2SOMEren',
+      description: 'Advanced live streaming infrastructure and service platform',
+      href: 'https://2some.ren',
+      icon: Globe,
+      features: ['Infrastructure', 'Service Platform', 'High Performance'],
+      color: 'from-purple-500 to-pink-500',
+    },
+    {
+      name: 'MultiPost',
+      description: 'Multi-platform operations tool for social media management',
+      href: 'https://multipost.app',
+      icon: Zap,
+      features: ['Multi-Platform', 'Social Media', 'Operations'],
+      color: 'from-green-500 to-emerald-500',
+    },
+    {
+      name: 'Voite',
+      description: 'Voice and audio communication platform for creators',
+      href: 'https://voite.2some.one',
+      icon: Shield,
+      features: ['Voice Communication', 'Audio Platform', 'Creator Tools'],
+      color: 'from-orange-500 to-red-500',
+    },
+    {
+      name: 'FameDayOne',
+      description: 'Personal branding and fame building platform',
+      href: 'https://fameday.one',
+      icon: BookOpen,
+      features: ['Personal Branding', 'Fame Building', 'Growth Platform'],
+      color: 'from-indigo-500 to-purple-500',
+    },
+  ];
+
+  return (
+    <section className="relative w-full bg-background py-16">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mb-8 text-center">
+          <h2 className="mb-3 text-3xl font-bold tracking-tight">Our Products</h2>
+          <p className="mx-auto max-w-2xl text-base text-muted-foreground">
+            Discover our comprehensive suite of tools and platforms designed to empower creators, streamers, and
+            businesses in the digital age
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {PRODUCTS.map((product) => (
+            <Card
+              key={product.name}
+              className="group cursor-pointer border shadow-none transition-all duration-300 hover:scale-[1.02]"
+              as="a"
+              href={product.href}
+              target="_blank"
+              rel="noopener noreferrer">
+              <CardHeader className="pb-2">
+                <div className="flex items-center gap-3">
+                  <div className={`rounded-lg bg-gradient-to-r p-2.5 ${product.color} text-white`}>
+                    <product.icon className="size-5" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-semibold">{product.name}</h3>
+                    <p className="text-xs text-muted-foreground">{product.description}</p>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardBody className="pt-0">
+                <div className="space-y-1.5">
+                  {product.features.map((feature) => (
+                    <div
+                      key={feature}
+                      className="flex items-center gap-2">
+                      <div className="size-1 rounded-full bg-primary/60" />
+                      <span className="text-xs text-muted-foreground">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-3 flex justify-end">
+                  <ExternalLink className="size-3.5 text-muted-foreground transition-colors group-hover:text-primary" />
+                </div>
+              </CardBody>
+            </Card>
+          ))}
+        </div>
+
+        <div className="mt-12 text-center">
+          <div className="inline-flex items-center gap-2 rounded-full bg-muted/50 px-6 py-3">
+            <Globe className="size-5 text-muted-foreground" />
+            <span className="text-sm text-muted-foreground">
+              All products are designed and maintained by the LEAPERone team
+            </span>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -13,8 +13,8 @@ type SocialIconProps = Omit<IconProps, 'icon'>;
 const footerNavigation = {
   services: [
     { name: '2SOMEone', href: 'https://2some.one' },
+    { name: '2SOMEren', href: 'https://2some.ren' },
     { name: 'MultiPost Multi-platform Operations Tool', href: 'https://multipost.app' },
-    { name: 'LiXi', href: '/dashboard/oh-gift' },
     { name: 'Voite', href: 'https://voite.2some.one' },
     { name: 'FameDayOne', href: 'https://fameday.one' },
   ],
