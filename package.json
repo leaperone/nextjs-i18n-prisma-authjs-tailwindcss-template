@@ -10,9 +10,9 @@
     "lint": "next lint",
     "eslint": "eslint . --ext .ts,.tsx",
     "eslint:fix": "eslint . --ext .ts,.tsx --fix",
-    "biome": "biome check .",
-    "biome:fix": "biome check --write .",
-    "biome:format": "biome format --write .",
+    "check": "biome check .",
+    "fix": "biome check --write .",
+    "format": "biome format --write .",
     "prepare": "husky",
     "release": "standard-version -t 'v-'",
     "release:100": "pnpm run release -- --release-as major",
@@ -60,12 +60,11 @@
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.8.1",
     "@types/canvas-confetti": "^1.9.0",
-    "@types/form-data": "^2.5.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "embla-carousel": "8.3.1",
-    "embla-carousel-autoplay": "^8.5.2",
-    "embla-carousel-react": "8.3.1",
+    "embla-carousel": "8.6.0",
+    "embla-carousel-autoplay": "^8.6.0",
+    "embla-carousel-react": "8.6.0",
     "form-data": "^4.0.1",
     "framer-motion": "^11.18.2",
     "i18next": "^24.2.2",
@@ -147,10 +146,20 @@
   "pnpm": {
     "overrides": {
       "@types/react": "19.1.1",
-      "@types/react-dom": "19.1.2"
+      "@types/react-dom": "19.1.2",
+      "react": "19.1.0",
+      "react-dom": "19.1.0"
+    },
+    "peerDependencyRules": {
+      "allowedVersions": {
+        "react": "19",
+        "react-dom": "19"
+      }
     }
   },
   "lint-staged": {
-    "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": ["biome check --write --unsafe --no-errors-on-unmatched"]
+    "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": [
+      "biome check --write --unsafe --no-errors-on-unmatched"
+    ]
   }
 }
