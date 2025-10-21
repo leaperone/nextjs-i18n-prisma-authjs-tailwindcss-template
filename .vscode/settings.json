@@ -1,42 +1,64 @@
 {
-    //#region 格式化
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "explicit",
-      "source.fixAll.stylelint": "explicit"
-    },
-  
-    "editor.defaultFormatter": "esbenp.prettier-vscode", // 默认使用 prettier 进行格式化
-  
-    "[typescriptreact]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode",
-      "editor.formatOnSave": true, // 保存的时候自动格式化
-    },
-    "[javascript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode",
-      "editor.formatOnSave": true, // 保存的时候自动格式化
-    },
-    "[typescript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode",
-      "editor.formatOnSave": true, // 保存的时候自动格式化
-    },
-    "[json]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode",
-      "editor.formatOnSave": true, // 保存的时候自动格式化
-    },
+  //#region 格式化
+  "editor.codeActionsOnSave": {
+    "source.organizeImports.biome": "explicit",
+    "source.fixAll.biome": "always"
+  },
 
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "biomejs.biome",
 
-    // Fix tailwindcss class name
-    "tailwindCSS.includeLanguages": {
-      "javascript": "javascript",
-      "html": "HTML"
-    },
-    "editor.quickSuggestions": {
-      "strings": true
-    },
-    "i18n-ally.localesPaths": [
-      "i18n/locales"
-    ],
-    "[prisma]": {
-      "editor.defaultFormatter": "Prisma.prisma"
-    },
-  }
+  // 为所有支持的语言配置 Biome
+  "[typescript]": {
+    "editor.defaultFormatter": "biomejs.biome",
+    "editor.formatOnSave": true
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome",
+    "editor.formatOnSave": true
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "biomejs.biome",
+    "editor.formatOnSave": true
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome",
+    "editor.formatOnSave": true
+  },
+  "[json]": {
+    "editor.defaultFormatter": "biomejs.biome",
+    "editor.formatOnSave": true
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "biomejs.biome",
+    "editor.formatOnSave": true
+  },
+  "[css]": {
+    "editor.defaultFormatter": "biomejs.biome",
+    "editor.formatOnSave": true
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "biomejs.biome",
+    "editor.formatOnSave": true
+  },
+
+  // Biome 扩展配置
+  "biome.rename": true,
+  "biome.lsp.enabled": true,
+
+  // 调试配置
+  "biome.requireConfig": false,
+  // Fix tailwindcss class name
+  "tailwindCSS.includeLanguages": {
+    "javascript": "javascript",
+    "html": "HTML"
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  },
+  "remote.localPortHost": "allInterfaces",
+  "i18n-ally.localesPaths": ["i18n", "i18n/locales"]
+}
