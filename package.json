@@ -10,6 +10,9 @@
     "lint": "next lint",
     "eslint": "eslint . --ext .ts,.tsx",
     "eslint:fix": "eslint . --ext .ts,.tsx --fix",
+    "biome": "biome check .",
+    "biome:fix": "biome check --write .",
+    "biome:format": "biome format --write .",
     "prepare": "husky",
     "release": "standard-version -t 'v-'",
     "release:100": "pnpm run release -- --release-as major",
@@ -59,6 +62,7 @@
     "@types/canvas-confetti": "^1.9.0",
     "@types/form-data": "^2.5.2",
     "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "embla-carousel": "8.3.1",
     "embla-carousel-autoplay": "^8.5.2",
     "embla-carousel-react": "8.3.1",
@@ -106,7 +110,6 @@
     "usehooks-ts": "^3.1.0",
     "uuid": "^10.0.0",
     "vaul": "^0.9.9",
-    "clsx": "^2.1.1",
     "zod": "^3.24.1",
     "zustand": "^4.5.6"
   },
@@ -124,6 +127,7 @@
     "@types/uuid": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
+    "biome": "^0.3.3",
     "czg": "^1.11.0",
     "eslint": "^8.57.1",
     "eslint-config-next": "15.3.0",
@@ -145,5 +149,8 @@
       "@types/react": "19.1.1",
       "@types/react-dom": "19.1.2"
     }
+  },
+  "lint-staged": {
+    "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": ["biome check --write --unsafe --no-errors-on-unmatched"]
   }
 }
