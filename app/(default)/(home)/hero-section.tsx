@@ -92,7 +92,7 @@ const HeroSectionTextHover: React.FC<{ className?: string }> = ({ className }) =
     <div className={cn("storybook-fix relative min-h-[60px] w-full rounded-2xl pt-4", className)}>
       <div className="flex flex-col items-center justify-center gap-3">
         <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 p-4 font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
-          {features.map((feature) => (
+          {features.map((feature, featureIndex) => (
             <div key={feature.text} className="group relative flex items-center">
               <span
                 className={cn("text-foreground transition-colors duration-300", `group-hover:${feature.hoverColor}`)}>
