@@ -1,5 +1,4 @@
-import { cn, Image } from '@heroui/react';
-import React from 'react';
+import { cn, Image } from "@/lib/heroui";
 
 export const BrandLogo = () => (
   <div className="flex size-10 items-center rounded-full bg-white dark:bg-black">
@@ -14,7 +13,7 @@ export const BrandName = ({ className }: { className?: string }) => {
   return (
     <span
       className={cn(
-        'bg-gradient-to-br from-blue-300 to-pink-600 bg-clip-text font-semibold text-transparent dark:from-blue-400 dark:to-pink-400',
+        "bg-gradient-to-br from-blue-300 to-pink-600 bg-clip-text font-semibold text-transparent dark:from-blue-400 dark:to-pink-400",
         className,
       )}>
       LEAPERone Template

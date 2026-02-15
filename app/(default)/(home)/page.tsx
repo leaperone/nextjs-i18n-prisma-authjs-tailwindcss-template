@@ -1,9 +1,9 @@
-import { Avatar, Card, CardBody, CardHeader } from "@heroui/react";
 import { BookOpen, ExternalLink, Globe, Shield, Users, Zap } from "lucide-react";
 import FlipCard from "@/components/animata/card/flip-card";
 import ScrollingBanner from "@/components/scrolling-banner";
 import Marquee from "@/components/ui/marquee";
 import { createTranslation } from "@/i18n/server";
+import { Avatar, Card, CardBody, CardHeader } from "@/lib/heroui";
 import HeroSection from "./hero-section";
 
 export default async function HomePage() {
@@ -255,7 +255,7 @@ const UserRecommendations = async () => {
 
         <Marquee className="py-8" pauseOnHover>
           {RECOMMENDATIONS.map((item) => (
-            <div key={item.id} className="mx-4 w-[350px] rounded-xl border bg-card p-6 shadow-sm">
+            <div key={item.id} className="mx-4 w-[350px] rounded-xl border bg-card p-6 shadow-xs">
               <div className="flex items-center gap-4">
                 <Avatar src={item.avatar} name={item.name} className="size-12" />
                 <div>

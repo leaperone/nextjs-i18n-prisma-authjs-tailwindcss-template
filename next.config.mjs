@@ -3,6 +3,7 @@ import { PrismaPlugin } from '@prisma/nextjs-monorepo-workaround-plugin';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone',
+  turbopack: {},
   images: {
     remotePatterns: [{ protocol: 'https', hostname: 'nextui.org' }],
   },

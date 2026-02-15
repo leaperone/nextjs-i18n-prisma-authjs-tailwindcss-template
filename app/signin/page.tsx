@@ -1,13 +1,13 @@
-import React from 'react';
-import { signIn } from '@/auth';
-import { Button, Spacer } from "@heroui/react";
-import { Icon } from '@iconify/react/dist/iconify.js';
+import { Icon } from "@iconify/react/dist/iconify.js";
+import { signIn } from "@/auth";
+import { Button, Spacer } from "@/lib/heroui";
+
 // import { MailIcon } from 'lucide-react';
 
 const SigninPage = async () => {
   return (
     <div className="flex min-h-[40px] flex-col items-center gap-2 pb-2">
-      <h1 className="text-xl font-medium">Sign In</h1>
+      <h1 className="font-medium text-xl">Sign In</h1>
       <Spacer y={4} />
       {/* <form
         className="w-full max-w-sm space-y-4"
@@ -40,18 +40,13 @@ const SigninPage = async () => {
 
       <form
         action={async () => {
-          'use server';
-          await signIn('google', { redirectTo: '/dashboard' });
+          "use server";
+          await signIn("google", { redirectTo: "/dashboard" });
         }}>
         <Button
           type="submit"
           className="w-full bg-foreground/10 dark:bg-foreground/20"
-          startContent={
-            <Icon
-              icon="logos:google-icon"
-              className="size-6"
-            />
-          }>
+          startContent={<Icon icon="logos:google-icon" className="size-6" />}>
           Sign in with Google
         </Button>
       </form>
@@ -60,18 +55,13 @@ const SigninPage = async () => {
 
       <form
         action={async () => {
-          'use server';
-          await signIn('github', { redirectTo: '/dashboard' });
+          "use server";
+          await signIn("github", { redirectTo: "/dashboard" });
         }}>
         <Button
           type="submit"
           className="w-full bg-foreground/10 dark:bg-foreground/20"
-          startContent={
-            <Icon
-              icon="logos:github-icon"
-              className="size-6"
-            />
-          }>
+          startContent={<Icon icon="logos:github-icon" className="size-6" />}>
           Sign in with GitHub
         </Button>
       </form>

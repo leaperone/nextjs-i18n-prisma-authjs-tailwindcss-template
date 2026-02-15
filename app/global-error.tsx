@@ -1,9 +1,9 @@
-'use client'; // Error components must be Client Components
+"use client"; // Error components must be Client Components
 
-import Link from 'next/link';
-import { useEffect } from 'react';
+import Link from "next/link";
+import { useEffect } from "react";
 
-export default function Error({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
+export default function GlobalError({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
   useEffect(() => {
     // Log the error to an error reporting service
     console.error(error);
@@ -19,17 +19,18 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
           alt="错误插图"
           className="mx-auto"
         /> */}
-        <h1 className="mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">哎呀，出错了！</h1>
+        <h1 className="mt-4 font-bold text-3xl text-foreground tracking-tight sm:text-4xl">哎呀，出错了！</h1>
         <p className="mt-4 text-muted-foreground">很抱歉，发生了意外错误。请稍后再试，如果问题仍然存在，请联系支持。</p>
         <div className="mt-6">
           <Link
             href="#"
-            className="inline-flex items-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+            className="inline-flex items-center rounded-md bg-primary px-4 py-2 font-medium text-primary-foreground text-sm shadow-xs transition-colors hover:bg-primary/90 focus:outline-hidden focus:ring-2 focus:ring-primary focus:ring-offset-2"
             prefetch={false}>
             前往首页
           </Link>
 
           <button
+            type="button"
             onClick={
               // Attempt to recover by trying to re-render the segment
               () => reset()

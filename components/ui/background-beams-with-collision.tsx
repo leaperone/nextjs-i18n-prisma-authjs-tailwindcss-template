@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-'use client';
-import { cn } from '@/lib/utils';
-import { motion, AnimatePresence } from 'framer-motion';
-import React, { useRef, useState, useEffect } from 'react';
+"use client";
+import { AnimatePresence, motion } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
+import { cn } from "@/lib/utils";
 
 export const BackgroundBeamsWithCollision = ({
   children,
@@ -34,7 +34,7 @@ export const BackgroundBeamsWithCollision = ({
       translateX: 100,
       duration: 7,
       repeatDelay: 7,
-      className: 'h-6',
+      className: "h-6",
     },
     {
       initialX: 400,
@@ -48,14 +48,14 @@ export const BackgroundBeamsWithCollision = ({
       translateX: 800,
       duration: 11,
       repeatDelay: 2,
-      className: 'h-20',
+      className: "h-20",
     },
     {
       initialX: 1000,
       translateX: 1000,
       duration: 4,
       repeatDelay: 2,
-      className: 'h-12',
+      className: "h-12",
     },
     {
       initialX: 1200,
@@ -63,7 +63,7 @@ export const BackgroundBeamsWithCollision = ({
       duration: 6,
       repeatDelay: 4,
       delay: 2,
-      className: 'h-6',
+      className: "h-6",
     },
   ];
 
@@ -71,13 +71,13 @@ export const BackgroundBeamsWithCollision = ({
     <div
       ref={parentRef}
       className={cn(
-        'h-96 md:h-[40rem] bg-gradient-to-b from-white to-neutral-100 dark:from-neutral-950 dark:to-neutral-800 relative flex items-center w-full justify-center overflow-hidden',
+        "relative flex h-96 w-full items-center justify-center overflow-hidden bg-gradient-to-b from-white to-neutral-100 md:h-[40rem] dark:from-neutral-950 dark:to-neutral-800",
         // h-screen if you want bigger
         className,
       )}>
       {beams.map((beam) => (
         <CollisionMechanism
-          key={beam.initialX + 'beam-idx'}
+          key={`${beam.initialX}beam-idx`}
           beamOptions={beam}
           containerRef={containerRef}
           parentRef={parentRef}
@@ -90,7 +90,7 @@ export const BackgroundBeamsWithCollision = ({
         className="pointer-events-none absolute inset-x-0 bottom-0 w-full bg-neutral-100"
         style={{
           boxShadow:
-            '0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset',
+            "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset",
         }}></div>
     </div>
   );
@@ -151,7 +151,7 @@ const CollisionMechanism = React.forwardRef<
     const animationInterval = setInterval(checkCollision, 50);
 
     return () => clearInterval(animationInterval);
-  }, [cycleCollisionDetected, containerRef]);
+  }, [cycleCollisionDetected, containerRef, parentRef.current]);
 
   useEffect(() => {
     if (collision.detected && collision.coordinates) {
@@ -173,27 +173,27 @@ const CollisionMechanism = React.forwardRef<
         ref={beamRef}
         animate="animate"
         initial={{
-          translateY: beamOptions.initialY || '-200px',
-          translateX: beamOptions.initialX || '0px',
+          translateY: beamOptions.initialY || "-200px",
+          translateX: beamOptions.initialX || "0px",
           rotate: beamOptions.rotate || 0,
         }}
         variants={{
           animate: {
-            translateY: beamOptions.translateY || '1800px',
-            translateX: beamOptions.translateX || '0px',
+            translateY: beamOptions.translateY || "1800px",
+            translateX: beamOptions.translateX || "0px",
             rotate: beamOptions.rotate || 0,
           },
         }}
         transition={{
           duration: beamOptions.duration || 8,
           repeat: Infinity,
-          repeatType: 'loop',
-          ease: 'linear',
+          repeatType: "loop",
+          ease: "linear",
           delay: beamOptions.delay || 0,
           repeatDelay: beamOptions.repeatDelay || 0,
         }}
         className={cn(
-          'absolute left-0 top-20 m-auto h-14 w-px rounded-full bg-gradient-to-t from-indigo-500 via-purple-500 to-transparent',
+          "absolute top-20 left-0 m-auto h-14 w-px rounded-full bg-gradient-to-t from-indigo-500 via-purple-500 to-transparent",
           beamOptions.className,
         )}
       />
@@ -205,7 +205,7 @@ const CollisionMechanism = React.forwardRef<
             style={{
               left: `${collision.coordinates.x}px`,
               top: `${collision.coordinates.y}px`,
-              transform: 'translate(-50%, -50%)',
+              transform: "translate(-50%, -50%)",
             }}
           />
         )}
@@ -214,7 +214,7 @@ const CollisionMechanism = React.forwardRef<
   );
 });
 
-CollisionMechanism.displayName = 'CollisionMechanism';
+CollisionMechanism.displayName = "CollisionMechanism";
 
 const Explosion = ({ ...props }: React.HTMLProps<HTMLDivElement>) => {
   const spans = Array.from({ length: 20 }, (_, index) => ({
@@ -226,15 +226,13 @@ const Explosion = ({ ...props }: React.HTMLProps<HTMLDivElement>) => {
   }));
 
   return (
-    <div
-      {...props}
-      className={cn('absolute z-50 h-2 w-2', props.className)}>
+    <div {...props} className={cn("absolute z-50 h-2 w-2", props.className)}>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 1.5, ease: 'easeOut' }}
-        className="absolute -inset-x-10 top-0 m-auto h-2 w-10 rounded-full bg-gradient-to-r from-transparent via-indigo-500 to-transparent blur-sm"></motion.div>
+        transition={{ duration: 1.5, ease: "easeOut" }}
+        className="-inset-x-10 absolute top-0 m-auto h-2 w-10 rounded-full bg-gradient-to-r from-transparent via-indigo-500 to-transparent blur-xs"></motion.div>
       {spans.map((span) => (
         <motion.span
           key={span.id}
@@ -244,7 +242,7 @@ const Explosion = ({ ...props }: React.HTMLProps<HTMLDivElement>) => {
             y: span.directionY,
             opacity: 0,
           }}
-          transition={{ duration: Math.random() * 1.5 + 0.5, ease: 'easeOut' }}
+          transition={{ duration: Math.random() * 1.5 + 0.5, ease: "easeOut" }}
           className="absolute size-1 rounded-full bg-gradient-to-b from-indigo-500 to-purple-500"
         />
       ))}

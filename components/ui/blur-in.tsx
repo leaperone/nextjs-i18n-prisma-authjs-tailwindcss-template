@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
-import { cn } from '@/lib/utils';
+import { cn } from "@/lib/utils";
 
 interface BlurIntProps {
   word: string;
@@ -15,8 +15,8 @@ interface BlurIntProps {
 }
 const BlurIn = ({ word, className, variant, duration = 1 }: BlurIntProps) => {
   const defaultVariants = {
-    hidden: { filter: 'blur(10px)', opacity: 0 },
-    visible: { filter: 'blur(0px)', opacity: 1 },
+    hidden: { filter: "blur(10px)", opacity: 0 },
+    visible: { filter: "blur(0px)", opacity: 1 },
   };
   const combinedVariants = variant || defaultVariants;
 
@@ -27,7 +27,7 @@ const BlurIn = ({ word, className, variant, duration = 1 }: BlurIntProps) => {
       transition={{ duration }}
       variants={combinedVariants}
       className={cn(
-        'font-display text-center text-4xl font-bold tracking-[-0.02em] drop-shadow-sm md:text-7xl md:leading-[5rem]',
+        "text-center font-bold font-display text-4xl tracking-[-0.02em] drop-shadow-xs md:text-7xl md:leading-[5rem]",
         className,
       )}>
       {word}
