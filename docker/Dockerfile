@@ -12,7 +12,6 @@ WORKDIR /app
 FROM base AS builder
 ENV NODE_OPTIONS="--max-old-space-size=8192"
 RUN --mount=type=cache,id=pnpm-template-web,target=/pnpm/store pnpm install --frozen-lockfile --registry https://registry.npmmirror.com
-RUN sh prisma/generate.sh
 RUN pnpm run build
 
 FROM node:20-alpine AS final

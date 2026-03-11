@@ -45,5 +45,4 @@ next-env.d.ts
 
 docker/docker-compose.yml
 
-prisma/client*
 

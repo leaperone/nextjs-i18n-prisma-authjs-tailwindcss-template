@@ -1,19 +1,16 @@
-import { PrismaClient as PrismaTemplateClient } from '@/prisma/client_template';
+import { drizzle } from "drizzle-orm/node-postgres";
+import * as schema from "./schema";
 
-// 全局类型声明
-declare const globalThis: {
-  prismaTemplateGlobal: ReturnType<typeof createTemplateClient>;
-} & typeof global;
+const g = globalThis as unknown as {
+  drizzleGlobal: ReturnType<typeof createClient>;
+};
 
-// 创建客户端单例
-const createTemplateClient = () => new PrismaTemplateClient();
+const createClient = () => drizzle(process.env.TEMPLATE_DATABASE_URL as string, { schema });
 
-// 初始化客户端实例
-export const templateDb = globalThis.prismaTemplateGlobal ?? createTemplateClient();
+export const templateDb = g.drizzleGlobal ?? createClient();
 
-// 开发环境下保存全局实例
-if (process.env.NODE_ENV !== 'production') {
-  globalThis.prismaTemplateGlobal = templateDb;
+if (process.env.NODE_ENV !== "production") {
+  g.drizzleGlobal = templateDb;
 }
 
-export const prisma = templateDb;
+export const db = templateDb;

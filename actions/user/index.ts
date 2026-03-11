@@ -1,10 +1,14 @@
-'use server';
+"use server";
 
-import { templateDb } from '@/lib/db';
-import { auth } from '@/auth';
+import { auth } from "@/auth";
+import { templateDb } from "@/lib/db";
 
 export const getUserInfo = async () => {
   const session = await auth();
   const user = session?.user;
-  return await templateDb.user.findUnique({ where: { id: user?.id } });
+  if (!user?.id) return null;
+
+  return await templateDb.query.users.findFirst({
+    where: (users, { eq }) => eq(users.id, user.id as string),
+  });
 };

@@ -56,9 +56,6 @@
   "editor.quickSuggestions": {
     "strings": true
   },
-  "[prisma]": {
-    "editor.defaultFormatter": "Prisma.prisma"
-  },
   "remote.localPortHost": "allInterfaces",
   "i18n-ally.localesPaths": ["i18n", "i18n/locales"]
 }
