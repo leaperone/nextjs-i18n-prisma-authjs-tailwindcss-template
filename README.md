@@ -69,7 +69,7 @@ Create `.env.local` file:
 
 ```env
 # Database
-TEMPLATE_DATABASE_URL="postgresql://leaperone:password@localhost:5432/template_db"
+DATABASE_URL="postgresql://leaperone:password@localhost:5432/template_db"
 
 # NextAuth.js
 NEXTAUTH_SECRET="your-secret-key"
@@ -88,7 +88,7 @@ docker compose -f docker/docker-compose-dev-db.yml up -d
 ```
 
 #### Option B: Local PostgreSQL
-Ensure PostgreSQL is running and create a database, then update `TEMPLATE_DATABASE_URL`.
+Ensure PostgreSQL is running and create a database, then update `DATABASE_URL`.
 
 ### 4. Initialize Database
 

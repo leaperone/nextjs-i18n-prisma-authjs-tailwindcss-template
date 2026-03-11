@@ -1,7 +1,7 @@
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import NextAuth, { type User } from "next-auth";
 import Github from "next-auth/providers/github";
-import { templateDb } from "@/lib/db";
+import { db } from "@/lib/db";
 import { accounts, authenticators, sessions, users, verificationTokens } from "@/lib/schema";
 
 declare module "next-auth" {
@@ -14,7 +14,7 @@ declare module "next-auth" {
 }
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
-  adapter: DrizzleAdapter(templateDb, {
+  adapter: DrizzleAdapter(db, {
     usersTable: users,
     accountsTable: accounts,
     sessionsTable: sessions,

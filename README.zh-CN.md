@@ -69,7 +69,7 @@ pnpm install
 
 ```env
 # 数据库
-TEMPLATE_DATABASE_URL="postgresql://leaperone:password@localhost:5432/template_db"
+DATABASE_URL="postgresql://leaperone:password@localhost:5432/template_db"
 
 # NextAuth.js
 NEXTAUTH_SECRET="your-secret-key"
@@ -88,7 +88,7 @@ docker compose -f docker/docker-compose-dev-db.yml up -d
 ```
 
 #### 选项 B：本地 PostgreSQL
-确保 PostgreSQL 正在运行并创建数据库，然后更新 `TEMPLATE_DATABASE_URL`。
+确保 PostgreSQL 正在运行并创建数据库，然后更新 `DATABASE_URL`。
 
 ### 4. 初始化数据库
 

@@ -5,12 +5,10 @@ const g = globalThis as unknown as {
   drizzleGlobal: ReturnType<typeof createClient>;
 };
 
-const createClient = () => drizzle(process.env.TEMPLATE_DATABASE_URL as string, { schema });
+const createClient = () => drizzle(process.env.DATABASE_URL as string, { schema });
 
-export const templateDb = g.drizzleGlobal ?? createClient();
+export const db = g.drizzleGlobal ?? createClient();
 
 if (process.env.NODE_ENV !== "production") {
-  g.drizzleGlobal = templateDb;
+  g.drizzleGlobal = db;
 }
-
-export const db = templateDb;
