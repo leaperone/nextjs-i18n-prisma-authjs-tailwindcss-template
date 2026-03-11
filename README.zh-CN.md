@@ -1,4 +1,4 @@
-# Next.js 15 全栈模板
+# Next.js 16 全栈模板
 
 一个全面的、生产就绪的 Next.js 模板，包含国际化、身份验证、数据库集成和现代 UI 组件。
 
@@ -6,15 +6,15 @@
 
 ## ✨ 特色功能
 
-- **🚀 Next.js 15** - 最新的 React 框架，支持 App Router
+- **🚀 Next.js 16** - 最新的 React 框架，支持 App Router 和 Turbopack
 - **🌍 国际化** - 多语言支持（英文、中文、日文）
 - **🔐 身份验证** - 使用 NextAuth.js v5 和 GitHub OAuth 的安全认证
-- **🗄️ 数据库** - PostgreSQL 配合 Prisma ORM
+- **🗄️ 数据库** - PostgreSQL 配合 Drizzle ORM
 - **🎨 现代 UI** - 精美组件，包含 Tailwind CSS、shadcn/ui 和 HeroUI
 - **🌙 深色模式** - 内置主题切换
 - **📱 响应式设计** - 移动端优先的设计
 - **🎬 动画效果** - 使用 Framer Motion 的流畅动画
-- **🔧 开发体验** - TypeScript、ESLint、Prettier、Husky
+- **🔧 开发体验** - TypeScript、Biome、Husky
 - **🐳 Docker 支持** - 开发和生产环境容器
 - **📊 状态管理** - 使用 Zustand 管理客户端状态
 - **🎯 表单处理** - React Hook Form 配合 Zod 验证
@@ -22,7 +22,7 @@
 ## 🛠️ 技术栈
 
 ### 核心技术
-- **[Next.js 15](https://nextjs.org/)** - 支持 App Router 的 React 框架
+- **[Next.js 16](https://nextjs.org/)** - 支持 App Router 和 Turbopack 的 React 框架
 - **[TypeScript](https://www.typescriptlang.org/)** - 类型安全的 JavaScript
 - **[React 19](https://react.dev/)** - 最新的 React 并发特性
 
@@ -35,7 +35,7 @@
 
 ### 身份验证和数据库
 - **[NextAuth.js v5](https://authjs.dev/)** - 完整的身份验证解决方案
-- **[Prisma](https://www.prisma.io/)** - 下一代 ORM
+- **[Drizzle ORM](https://orm.drizzle.team/)** - 轻量级类型安全的 ORM
 - **[PostgreSQL](https://www.postgresql.org/)** - 高级开源数据库
 
 ### 国际化
@@ -43,8 +43,7 @@
 - **[react-i18next](https://react.i18next.com/)** - i18next 的 React 集成
 
 ### 开发工具
-- **[ESLint](https://eslint.org/)** - 代码检查
-- **[Prettier](https://prettier.io/)** - 代码格式化
+- **[Biome](https://biomejs.dev/)** - 快速的代码检查和格式化工具
 - **[Husky](https://typicode.github.io/husky/)** - Git 钩子
 - **[Commitlint](https://commitlint.js.org/)** - 规范化提交
 
@@ -70,7 +69,7 @@ pnpm install
 
 ```env
 # 数据库
-DATABASE_URL="postgresql://username:password@localhost:5432/mydb"
+TEMPLATE_DATABASE_URL="postgresql://leaperone:password@localhost:5432/template_db"
 
 # NextAuth.js
 NEXTAUTH_SECRET="your-secret-key"
@@ -85,20 +84,17 @@ AUTH_GITHUB_SECRET="your-github-client-secret"
 
 #### 选项 A：使用 Docker（推荐）
 ```bash
-docker compose -f docker/docker-compose.yml up -d
+docker compose -f docker/docker-compose-dev-db.yml up -d
 ```
 
 #### 选项 B：本地 PostgreSQL
-确保 PostgreSQL 正在运行并创建数据库，然后更新 `DATABASE_URL`。
+确保 PostgreSQL 正在运行并创建数据库，然后更新 `TEMPLATE_DATABASE_URL`。
 
 ### 4. 初始化数据库
 
 ```bash
-# 生成 Prisma 客户端
-sh prisma/generate.sh
-
-# 运行迁移（创建表）
-sh prisma/migrate.sh
+# 推送 schema 到数据库（创建表）
+pnpm db:push
 ```
 
 ### 5. 启动开发服务器
@@ -124,7 +120,9 @@ pnpm dev
 │   ├── locales/         # 翻译文件
 │   └── settings.ts      # i18n 配置
 ├── lib/                 # 实用工具库
-├── prisma/              # 数据库架构和迁移
+│   ├── schema.ts        # Drizzle ORM 表定义
+│   └── db.ts            # 数据库客户端
+├── drizzle/             # 数据库迁移文件
 ├── actions/             # 服务器操作
 ├── hooks/               # 自定义 React 钩子
 ├── store/               # Zustand 状态管理
@@ -147,13 +145,14 @@ pnpm dev
 
 ### 数据库配置
 
-1. **架构自定义：**
-   - 修改 `prisma/schema_template.prisma`
-   - 运行 `sh prisma/generate.sh` 重新生成客户端
+1. **Schema 自定义：**
+   - 修改 `lib/schema.ts` 添加或修改表定义
+   - 运行 `pnpm db:push` 在开发环境中应用变更
 
 2. **迁移：**
-   - 开发环境：`sh prisma/migrate.sh`
-   - 生产环境：`sh prisma/migrate_deploy.sh`
+   - 生成迁移文件：`pnpm db:generate`
+   - 应用迁移：`pnpm db:migrate`
+   - 可视化浏览：`pnpm db:studio`
 
 ### 国际化
 
@@ -166,17 +165,28 @@ pnpm dev
 ## 📦 可用脚本
 
 ```bash
-pnpm dev          # 启动开发服务器
-pnpm build        # 构建生产版本
+pnpm dev          # 启动开发服务器（Turbopack）
+pnpm build        # 构建生产版本（Turbopack）
 pnpm start        # 启动生产服务器
-pnpm lint         # 运行 ESLint
-pnpm lint:fix     # 修复 ESLint 问题
-pnpm type-check   # 运行 TypeScript 检查
+pnpm check        # 运行 Biome 代码检查
+pnpm fix          # 自动修复 Biome 问题
+pnpm format       # 使用 Biome 格式化代码
+pnpm db:push      # 推送 schema 到数据库（开发）
+pnpm db:generate  # 生成迁移文件
+pnpm db:migrate   # 应用迁移（生产）
+pnpm db:pull      # 从数据库反向生成 schema
+pnpm db:studio    # 打开 Drizzle Studio
 ```
 
 ## 🐳 Docker 支持
 
-### 开发容器（推荐）
+### 开发数据库
+
+```bash
+docker compose -f docker/docker-compose-dev-db.yml up -d
+```
+
+### 开发容器
 
 1. 安装 Docker 和带有 Remote-Containers 扩展的 VS Code
 2. 在 VS Code 中打开项目
@@ -230,7 +240,7 @@ pnpm start
 
 - **[Next.js 文档](https://nextjs.org/docs)** - 了解 Next.js 功能和 API
 - **[NextAuth.js 指南](https://authjs.dev/)** - 完整的身份验证文档
-- **[Prisma 文档](https://www.prisma.io/docs)** - 数据库和 ORM 文档
+- **[Drizzle ORM 文档](https://orm.drizzle.team/docs/overview)** - 数据库和 ORM 文档
 - **[Tailwind CSS](https://tailwindcss.com/docs)** - 实用工具优先的 CSS 框架
 - **[shadcn/ui](https://ui.shadcn.com/)** - 使用 Radix UI 构建的可重用组件
 - **[i18next](https://www.i18next.com/)** - 国际化框架
@@ -242,19 +252,22 @@ pnpm start
 **数据库连接错误：**
 ```bash
 # 检查 PostgreSQL 是否运行
-docker compose -f docker/docker-compose.yml ps
+docker compose -f docker/docker-compose-dev-db.yml ps
 
 # 重启容器
-docker compose -f docker/docker-compose.yml restart
+docker compose -f docker/docker-compose-dev-db.yml restart
 ```
 
-**Prisma 客户端问题：**
+**数据库 Schema 问题：**
 ```bash
-# 重新生成 Prisma 客户端
-sh prisma/generate.sh
+# 从现有数据库反向生成 schema
+pnpm db:pull
 
-# 重置数据库（⚠️ 这将删除所有数据）
-npx prisma db push --force-reset
+# 重新推送 schema（⚠️ 可能修改表结构）
+pnpm db:push
+
+# 打开可视化浏览器检查数据
+pnpm db:studio
 ```
 
 **身份验证不工作：**
@@ -270,4 +283,4 @@ npx prisma db push --force-reset
 
 **⭐ 如果这个仓库对您有帮助，请给它一个星标！**
 
-使用 Next.js 15、TypeScript 和现代 Web 技术 ❤️ 构建。
+使用 Next.js 16、TypeScript 和现代 Web 技术 ❤️ 构建。

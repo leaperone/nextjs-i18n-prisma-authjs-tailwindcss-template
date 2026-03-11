@@ -1,4 +1,4 @@
-# Next.js 15 Full-Stack Template
+# Next.js 16 Full-Stack Template
 
 A comprehensive, production-ready Next.js template with internationalization, authentication, database integration, and modern UI components.
 
@@ -6,15 +6,15 @@ A comprehensive, production-ready Next.js template with internationalization, au
 
 ## ✨ Features
 
-- **🚀 Next.js 15** - Latest React framework with App Router
+- **🚀 Next.js 16** - Latest React framework with App Router and Turbopack
 - **🌍 Internationalization** - Multi-language support (English, Chinese, Japanese)
 - **🔐 Authentication** - Secure auth with NextAuth.js v5 and GitHub OAuth
-- **🗄️ Database** - PostgreSQL with Prisma ORM
+- **🗄️ Database** - PostgreSQL with Drizzle ORM
 - **🎨 Modern UI** - Beautiful components with Tailwind CSS, shadcn/ui, and HeroUI
 - **🌙 Dark Mode** - Built-in theme switching
 - **📱 Responsive** - Mobile-first design
 - **🎬 Animations** - Smooth animations with Framer Motion
-- **🔧 Developer Experience** - TypeScript, ESLint, Prettier, Husky
+- **🔧 Developer Experience** - TypeScript, Biome, Husky
 - **🐳 Docker Support** - Development and production containers
 - **📊 State Management** - Zustand for client state
 - **🎯 Form Handling** - React Hook Form with Zod validation
@@ -22,7 +22,7 @@ A comprehensive, production-ready Next.js template with internationalization, au
 ## 🛠️ Tech Stack
 
 ### Core
-- **[Next.js 15](https://nextjs.org/)** - React framework with App Router
+- **[Next.js 16](https://nextjs.org/)** - React framework with App Router and Turbopack
 - **[TypeScript](https://www.typescriptlang.org/)** - Type-safe JavaScript
 - **[React 19](https://react.dev/)** - Latest React with concurrent features
 
@@ -35,7 +35,7 @@ A comprehensive, production-ready Next.js template with internationalization, au
 
 ### Authentication & Database
 - **[NextAuth.js v5](https://authjs.dev/)** - Complete authentication solution
-- **[Prisma](https://www.prisma.io/)** - Next-generation ORM
+- **[Drizzle ORM](https://orm.drizzle.team/)** - Lightweight and type-safe ORM
 - **[PostgreSQL](https://www.postgresql.org/)** - Advanced open source database
 
 ### Internationalization
@@ -43,8 +43,7 @@ A comprehensive, production-ready Next.js template with internationalization, au
 - **[react-i18next](https://react.i18next.com/)** - React integration for i18next
 
 ### Development Tools
-- **[ESLint](https://eslint.org/)** - Code linting
-- **[Prettier](https://prettier.io/)** - Code formatting
+- **[Biome](https://biomejs.dev/)** - Fast linter and formatter
 - **[Husky](https://typicode.github.io/husky/)** - Git hooks
 - **[Commitlint](https://commitlint.js.org/)** - Conventional commits
 
@@ -70,7 +69,7 @@ Create `.env.local` file:
 
 ```env
 # Database
-DATABASE_URL="postgresql://username:password@localhost:5432/mydb"
+TEMPLATE_DATABASE_URL="postgresql://leaperone:password@localhost:5432/template_db"
 
 # NextAuth.js
 NEXTAUTH_SECRET="your-secret-key"
@@ -85,20 +84,17 @@ AUTH_GITHUB_SECRET="your-github-client-secret"
 
 #### Option A: Using Docker (Recommended)
 ```bash
-docker compose -f docker/docker-compose.yml up -d
+docker compose -f docker/docker-compose-dev-db.yml up -d
 ```
 
 #### Option B: Local PostgreSQL
-Ensure PostgreSQL is running and create a database, then update `DATABASE_URL`.
+Ensure PostgreSQL is running and create a database, then update `TEMPLATE_DATABASE_URL`.
 
 ### 4. Initialize Database
 
 ```bash
-# Generate Prisma client
-sh prisma/generate.sh
-
-# Run migrations (creates tables)
-sh prisma/migrate.sh
+# Push schema to database (creates tables)
+pnpm db:push
 ```
 
 ### 5. Start Development Server
@@ -124,7 +120,9 @@ Visit [http://localhost:3000](http://localhost:3000) to see your application!
 │   ├── locales/         # Translation files
 │   └── settings.ts      # i18n configuration
 ├── lib/                 # Utility libraries
-├── prisma/              # Database schema & migrations
+│   ├── schema.ts        # Drizzle ORM table definitions
+│   └── db.ts            # Database client
+├── drizzle/             # Database migrations
 ├── actions/             # Server actions
 ├── hooks/               # Custom React hooks
 ├── store/               # Zustand state management
@@ -148,12 +146,13 @@ Visit [http://localhost:3000](http://localhost:3000) to see your application!
 ### Database Configuration
 
 1. **Schema Customization:**
-   - Modify `prisma/schema_template.prisma`
-   - Run `sh prisma/generate.sh` to regenerate client
+   - Modify `lib/schema.ts` to add or change table definitions
+   - Run `pnpm db:push` to apply changes in development
 
 2. **Migrations:**
-   - Development: `sh prisma/migrate.sh`
-   - Production: `sh prisma/migrate_deploy.sh`
+   - Generate migration: `pnpm db:generate`
+   - Apply migration: `pnpm db:migrate`
+   - Visual browser: `pnpm db:studio`
 
 ### Internationalization
 
@@ -166,17 +165,28 @@ Visit [http://localhost:3000](http://localhost:3000) to see your application!
 ## 📦 Available Scripts
 
 ```bash
-pnpm dev          # Start development server
-pnpm build        # Build for production
+pnpm dev          # Start development server (Turbopack)
+pnpm build        # Build for production (Turbopack)
 pnpm start        # Start production server
-pnpm lint         # Run ESLint
-pnpm lint:fix     # Fix ESLint issues
-pnpm type-check   # Run TypeScript check
+pnpm check        # Run Biome lint check
+pnpm fix          # Auto-fix Biome issues
+pnpm format       # Format code with Biome
+pnpm db:push      # Push schema to database (dev)
+pnpm db:generate  # Generate migration files
+pnpm db:migrate   # Apply migrations (production)
+pnpm db:pull      # Introspect database to schema
+pnpm db:studio    # Open Drizzle Studio
 ```
 
 ## 🐳 Docker Support
 
-### Development Container (Recommended)
+### Development Database
+
+```bash
+docker compose -f docker/docker-compose-dev-db.yml up -d
+```
+
+### Development Container
 
 1. Install Docker and VS Code with Remote-Containers extension
 2. Open project in VS Code
@@ -230,7 +240,7 @@ This project uses [Conventional Commits](https://www.conventionalcommits.org/):
 
 - **[Next.js Documentation](https://nextjs.org/docs)** - Learn about Next.js features and API
 - **[NextAuth.js Guide](https://authjs.dev/)** - Complete authentication documentation
-- **[Prisma Docs](https://www.prisma.io/docs)** - Database and ORM documentation
+- **[Drizzle ORM Docs](https://orm.drizzle.team/docs/overview)** - Database and ORM documentation
 - **[Tailwind CSS](https://tailwindcss.com/docs)** - Utility-first CSS framework
 - **[shadcn/ui](https://ui.shadcn.com/)** - Re-usable components built with Radix UI
 - **[i18next](https://www.i18next.com/)** - Internationalization framework
@@ -242,19 +252,22 @@ This project uses [Conventional Commits](https://www.conventionalcommits.org/):
 **Database Connection Error:**
 ```bash
 # Check if PostgreSQL is running
-docker compose -f docker/docker-compose.yml ps
+docker compose -f docker/docker-compose-dev-db.yml ps
 
-# Restart containers
-docker compose -f docker/docker-compose.yml restart
+# Restart container
+docker compose -f docker/docker-compose-dev-db.yml restart
 ```
 
-**Prisma Client Issues:**
+**Database Schema Issues:**
 ```bash
-# Regenerate Prisma client
-sh prisma/generate.sh
+# Introspect existing database
+pnpm db:pull
 
-# Reset database (⚠️ This will delete all data)
-npx prisma db push --force-reset
+# Re-push schema (⚠️ May alter tables)
+pnpm db:push
+
+# Open visual browser to inspect data
+pnpm db:studio
 ```
 
 **Authentication Not Working:**
@@ -270,4 +283,4 @@ Licensed under the [MIT license](https://github.com/nextui-org/next-app-template
 
 **⭐ Star this repository if you found it helpful!**
 
-Built with ❤️ using Next.js 15, TypeScript, and modern web technologies.
+Built with ❤️ using Next.js 16, TypeScript, and modern web technologies.
