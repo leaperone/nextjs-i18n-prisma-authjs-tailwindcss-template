@@ -12,12 +12,17 @@ Component Library:
 - ContextMenu from Shadcn UI as "右键菜单"
 - Aceternity UI and Magic UI
 - Use lucide-react for icon. Sometime @iconify/react in code base, ignore it. heroicons.
+- HeroUI v3: uses compound component patterns (Card.Header, Card.Content, Avatar.Image, etc.)
+- No HeroUIProvider needed in v3
+- Removed components in v3: Navbar (use HTML/Tailwind), Image (use img/next-image), Spacer (use CSS)
+- Divider renamed to Separator
+- Button: no color prop, use variant (primary/secondary/tertiary/ghost/outline/danger)
 - Toast:
 ```tsx
 import {addToast, Button} from "@heroui/react";
 ...
 <Button
-  variant="flat"
+  variant="tertiary"
   onPress={() => {
     addToast({
       title: "Toast Title",

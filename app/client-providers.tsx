@@ -1,6 +1,5 @@
 "use client";
 
-import { HeroUIProvider } from "@heroui/react";
 import type { Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
@@ -18,13 +17,11 @@ export function ClientProviders({
 }) {
   return (
     <SessionProvider session={session}>
-      <HeroUIProvider>
-        <LocaleProvider value={locale}>
-          <NextThemesProvider attribute="class" defaultTheme="dark">
-            {children}
-          </NextThemesProvider>
-        </LocaleProvider>
-      </HeroUIProvider>
+      <LocaleProvider value={locale}>
+        <NextThemesProvider attribute="class" defaultTheme="dark">
+          {children}
+        </NextThemesProvider>
+      </LocaleProvider>
     </SessionProvider>
   );
 }

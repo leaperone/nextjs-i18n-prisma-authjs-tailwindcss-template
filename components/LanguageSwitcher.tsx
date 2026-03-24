@@ -1,31 +1,36 @@
-'use client';
-import React from 'react';
-import { Select, SelectItem } from "@heroui/react";
-import { switchLocaleAction } from '@/i18n/switch-locale';
-import { useTranslation } from '@/i18n/client';
-import { languages } from '@/i18n/settings';
+"use client";
+import { Label, ListBox, Select } from "@heroui/react";
+import { useTranslation } from "@/i18n/client";
+import { languages } from "@/i18n/settings";
+import { switchLocaleAction } from "@/i18n/switch-locale";
 
 export default function LanguageSwitcher() {
-  const { i18n } = useTranslation('home');
+  const { i18n } = useTranslation("home");
 
-  const handleLocaleChange = (value: string) => {
-    switchLocaleAction(value);
+  const handleLocaleChange = (value: string | null) => {
+    if (value) {
+      switchLocaleAction(value);
+    }
   };
 
   return (
-    <>
-      <Select
-        onChange={(e) => handleLocaleChange(e.target.value)}
-        defaultSelectedKeys={i18n.resolvedLanguage ? [i18n.resolvedLanguage] : []}
-        placeholder="Select language"
-      >
-        {languages.map((language) => (
-          <SelectItem
-            key={language.value}>
-            {language.label}
-          </SelectItem>
-        ))}
-      </Select>
-    </>
+    <Select
+      defaultValue={i18n.resolvedLanguage ?? null}
+      onChange={(value) => handleLocaleChange(value as string | null)}>
+      <Label className="sr-only">Select language</Label>
+      <Select.Trigger>
+        <Select.Value />
+        <Select.Indicator />
+      </Select.Trigger>
+      <Select.Popover>
+        <ListBox>
+          {languages.map((language) => (
+            <ListBox.Item key={language.value} id={language.value} textValue={language.label}>
+              {language.label}
+            </ListBox.Item>
+          ))}
+        </ListBox>
+      </Select.Popover>
+    </Select>
   );
 }

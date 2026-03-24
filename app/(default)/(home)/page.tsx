@@ -3,7 +3,7 @@ import FlipCard from "@/components/animata/card/flip-card";
 import ScrollingBanner from "@/components/scrolling-banner";
 import Marquee from "@/components/ui/marquee";
 import { createTranslation } from "@/i18n/server";
-import { Avatar, Card, CardBody, CardHeader } from "@/lib/heroui";
+import { Avatar, Card } from "@/lib/heroui";
 import HeroSection from "./hero-section";
 
 export default async function HomePage() {
@@ -112,38 +112,34 @@ const ProductShowcase = async () => {
 
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {PRODUCTS.map((product) => (
-            <Card
-              key={product.name}
-              className="group cursor-pointer border shadow-none transition-all duration-300 hover:scale-[1.02]"
-              as="a"
-              href={product.href}
-              target="_blank"
-              rel="noopener noreferrer">
-              <CardHeader className="pb-2">
-                <div className="flex items-center gap-3">
-                  <div className={`rounded-lg bg-gradient-to-r p-2.5 ${product.color} text-white`}>
-                    <product.icon className="size-5" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-lg">{product.name}</h3>
-                    <p className="text-muted-foreground text-xs">{product.description}</p>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardBody className="pt-0">
-                <div className="space-y-1.5">
-                  {product.features.map((feature) => (
-                    <div key={feature} className="flex items-center gap-2">
-                      <div className="size-1 rounded-full bg-primary/60" />
-                      <span className="text-muted-foreground text-xs">{feature}</span>
+            <a key={product.name} href={product.href} target="_blank" rel="noopener noreferrer" className="group">
+              <Card className="cursor-pointer border shadow-none transition-all duration-300 hover:scale-[1.02]">
+                <Card.Header className="pb-2">
+                  <div className="flex items-center gap-3">
+                    <div className={`rounded-lg bg-gradient-to-r p-2.5 ${product.color} text-white`}>
+                      <product.icon className="size-5" />
                     </div>
-                  ))}
-                </div>
-                <div className="mt-3 flex justify-end">
-                  <ExternalLink className="size-3.5 text-muted-foreground transition-colors group-hover:text-primary" />
-                </div>
-              </CardBody>
-            </Card>
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-lg">{product.name}</h3>
+                      <p className="text-muted-foreground text-xs">{product.description}</p>
+                    </div>
+                  </div>
+                </Card.Header>
+                <Card.Content className="pt-0">
+                  <div className="space-y-1.5">
+                    {product.features.map((feature) => (
+                      <div key={feature} className="flex items-center gap-2">
+                        <div className="size-1 rounded-full bg-primary/60" />
+                        <span className="text-muted-foreground text-xs">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-3 flex justify-end">
+                    <ExternalLink className="size-3.5 text-muted-foreground transition-colors group-hover:text-primary" />
+                  </div>
+                </Card.Content>
+              </Card>
+            </a>
           ))}
         </div>
 
@@ -257,7 +253,10 @@ const UserRecommendations = async () => {
           {RECOMMENDATIONS.map((item) => (
             <div key={item.id} className="mx-4 w-[350px] rounded-xl border bg-card p-6 shadow-xs">
               <div className="flex items-center gap-4">
-                <Avatar src={item.avatar} name={item.name} className="size-12" />
+                <Avatar className="size-12">
+                  <Avatar.Image src={item.avatar} alt={item.name} />
+                  <Avatar.Fallback>{item.name.slice(0, 2)}</Avatar.Fallback>
+                </Avatar>
                 <div>
                   <h3 className="font-semibold">{item.name}</h3>
                   <p className="text-muted-foreground text-sm">{item.role}</p>

@@ -1,5 +1,5 @@
 import { Calculator, FileText, Palette, Settings } from "lucide-react";
-import { Card, CardBody, CardHeader } from "@/lib/heroui";
+import { Card } from "@/lib/heroui";
 
 export default function ToolsPage() {
   const tools = [
@@ -39,16 +39,16 @@ export default function ToolsPage() {
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {tools.map((tool) => (
           <Card key={tool.title} className="transition-shadow hover:shadow-lg">
-            <CardHeader className="flex gap-3">
+            <Card.Header className="flex gap-3">
               <tool.icon className="size-6 text-primary" />
               <div className="flex flex-col">
                 <p className="font-semibold text-lg">{tool.title}</p>
                 <p className="text-muted-foreground text-sm">{tool.description}</p>
               </div>
-            </CardHeader>
-            <CardBody>
+            </Card.Header>
+            <Card.Content>
               <p className="text-muted-foreground text-sm">点击进入 {tool.title.toLowerCase()}</p>
-            </CardBody>
+            </Card.Content>
           </Card>
         ))}
       </div>

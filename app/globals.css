@@ -1,5 +1,6 @@
 /* stylelint-disable import-notation */
 @import "tailwindcss";
+@import "@heroui/styles";
 @import "tw-animate-css";
 @import "../node_modules/react-grid-layout/css/styles.css";
 @import "../node_modules/react-resizable/css/styles.css";
@@ -7,9 +8,6 @@
 @config "../tailwind.config.ts";
 
 @plugin "@tailwindcss/typography";
-@plugin "../hero.ts";
-
-@source "../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}";
 
 @custom-variant dark (&:is(.dark *));
 

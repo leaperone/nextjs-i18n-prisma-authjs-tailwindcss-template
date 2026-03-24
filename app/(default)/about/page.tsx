@@ -1,5 +1,5 @@
 import { Award, Heart, Mail, Phone, Target, Users } from "lucide-react";
-import { Avatar, Button, Card, CardBody, Chip } from "@/lib/heroui";
+import { Avatar, Button, Card, Chip } from "@/lib/heroui";
 
 export default function AboutPage() {
   const teamMembers = [
@@ -28,25 +28,21 @@ export default function AboutPage() {
       title: "用户至上",
       description: "我们始终将用户需求放在首位，提供最好的产品体验",
       icon: Heart,
-      color: "danger" as const,
     },
     {
       title: "创新驱动",
       description: "持续创新，不断突破技术边界，为用户创造价值",
       icon: Target,
-      color: "primary" as const,
     },
     {
       title: "团队协作",
       description: "相信团队的力量，通过协作创造更大的价值",
       icon: Users,
-      color: "success" as const,
     },
     {
       title: "品质保证",
       description: "追求卓越品质，为用户提供可靠的产品和服务",
       icon: Award,
-      color: "warning" as const,
     },
   ];
 
@@ -56,7 +52,7 @@ export default function AboutPage() {
       <div className="relative w-full bg-gradient-to-br from-background via-background to-primary/5">
         <div className="container mx-auto px-4 py-16 md:py-24">
           <div className="mx-auto max-w-4xl text-center">
-            <Chip size="lg" variant="flat" color="primary" className="mb-4">
+            <Chip size="lg" variant="tertiary" color="accent" className="mb-4">
               关于我们
             </Chip>
             <h1 className="mb-6 font-bold text-4xl text-foreground tracking-tight md:text-6xl">
@@ -67,10 +63,12 @@ export default function AboutPage() {
               我们致力于为用户提供最好的产品和服务，通过技术创新和用户导向的设计，为用户创造真正的价值。
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button size="lg" color="primary" startContent={<Mail className="size-4" />} className="min-w-32">
+              <Button size="lg" variant="primary" className="min-w-32">
+                <Mail className="size-4" />
                 联系我们
               </Button>
-              <Button size="lg" variant="flat" startContent={<Phone className="size-4" />} className="min-w-32">
+              <Button size="lg" variant="secondary" className="min-w-32">
+                <Phone className="size-4" />
                 了解更多
               </Button>
             </div>
@@ -81,7 +79,7 @@ export default function AboutPage() {
       {/* 使命和愿景 */}
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         <Card className="border shadow-none">
-          <CardBody className="p-6">
+          <Card.Content className="p-6">
             <div className="flex items-start gap-4">
               <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/10">
                 <Target className="size-6 text-primary" />
@@ -93,11 +91,11 @@ export default function AboutPage() {
                 </p>
               </div>
             </div>
-          </CardBody>
+          </Card.Content>
         </Card>
 
         <Card className="border shadow-none">
-          <CardBody className="p-6">
+          <Card.Content className="p-6">
             <div className="flex items-start gap-4">
               <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/10">
                 <Award className="size-6 text-primary" />
@@ -109,7 +107,7 @@ export default function AboutPage() {
                 </p>
               </div>
             </div>
-          </CardBody>
+          </Card.Content>
         </Card>
       </div>
 
@@ -119,7 +117,7 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {values.map((value) => (
             <Card key={value.title} className="border shadow-none">
-              <CardBody className="p-6">
+              <Card.Content className="p-6">
                 <div className="flex items-start gap-4">
                   <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
                     <value.icon className="size-5 text-primary" />
@@ -129,7 +127,7 @@ export default function AboutPage() {
                     <p className="text-muted-foreground text-sm leading-relaxed">{value.description}</p>
                   </div>
                 </div>
-              </CardBody>
+              </Card.Content>
             </Card>
           ))}
         </div>
@@ -141,20 +139,23 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {teamMembers.map((member) => (
             <Card key={member.name} className="border shadow-none">
-              <CardBody className="p-6">
+              <Card.Content className="p-6">
                 <div className="space-y-4">
                   <div className="flex items-center gap-4">
-                    <Avatar src={member.avatar} name={member.name} className="size-16 shrink-0" />
+                    <Avatar className="size-16 shrink-0">
+                      <Avatar.Image src={member.avatar} alt={member.name} />
+                      <Avatar.Fallback>{member.name.slice(0, 2)}</Avatar.Fallback>
+                    </Avatar>
                     <div className="space-y-2">
                       <h3 className="font-semibold text-lg">{member.name}</h3>
-                      <Chip color="primary" variant="flat" size="sm">
+                      <Chip color="accent" variant="tertiary" size="sm">
                         {member.role}
                       </Chip>
                     </div>
                   </div>
                   <p className="text-muted-foreground text-sm leading-relaxed">{member.description}</p>
                 </div>
-              </CardBody>
+              </Card.Content>
             </Card>
           ))}
         </div>

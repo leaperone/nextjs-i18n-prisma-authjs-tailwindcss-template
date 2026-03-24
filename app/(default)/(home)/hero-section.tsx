@@ -132,19 +132,20 @@ async function InfoContainer() {
 
   return (
     <div className="flex w-full flex-col items-center">
-      <Chip size="lg" variant="flat" color="success" startContent={<CheckIcon />}>
+      <Chip size="lg" variant="tertiary" color="success">
+        <CheckIcon className="size-4" />
         {t("hero.beta")}
       </Chip>
       <HeroSectionTextHover />
-      <p className="mb-8 w-full max-w-2xl animate-fadeIn text-center text-foreground-600 text-lg leading-8">
+      <p className="mb-8 w-full max-w-2xl animate-fadeIn text-center text-foreground/60 text-lg leading-8">
         All in one 🎯 tool that empowers 🚀 your creating 📝 in {underlinedWord("any platform")}.
       </p>
       <div className="flex animate-fadeIn justify-center gap-2">
         <Link href="/dashboard">
           <Button
             size="lg"
-            startContent={<LayoutDashboardIcon />}
             className="bg-gradient-to-r from-blue-400 to-sky-300 text-white transition-opacity hover:opacity-90">
+            <LayoutDashboardIcon className="size-5" />
             {t("hero.cta")}
           </Button>
         </Link>

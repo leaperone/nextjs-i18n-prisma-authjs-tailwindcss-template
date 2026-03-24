@@ -1,10 +1,10 @@
 // app/components/ThemeSwitcher.tsx
-'use client';
-import { Sun, Moon } from 'lucide-react';
+"use client";
 import { Button } from "@heroui/react";
-import { useTheme } from 'next-themes';
-import { useEffect, useState } from 'react';
-import { SidebarMenuButton } from './ui/sidebar';
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
+import { SidebarMenuButton } from "./ui/sidebar";
 
 interface ThemeSwitcherProps {
   className?: string;
@@ -23,22 +23,20 @@ export function ThemeSwitcher({ className, isBlur = true }: ThemeSwitcherProps) 
 
   return (
     <div className={className}>
-      {theme === 'light' ? (
+      {theme === "light" ? (
         <Button
-          isIconOnly
-          variant="light"
+          variant="ghost"
           size="sm"
-          className={isBlur ? 'bg-foreground/10 dark:bg-foreground/20' : ''}
-          onPress={() => setTheme('dark')}>
+          className={isBlur ? "bg-foreground/10 dark:bg-foreground/20" : ""}
+          onPress={() => setTheme("dark")}>
           <Sun />
         </Button>
       ) : (
         <Button
-          isIconOnly
-          variant="light"
+          variant="ghost"
           size="sm"
-          className={isBlur ? 'bg-foreground/10 dark:bg-foreground/20' : ''}
-          onPress={() => setTheme('light')}>
+          className={isBlur ? "bg-foreground/10 dark:bg-foreground/20" : ""}
+          onPress={() => setTheme("light")}>
           <Moon />
         </Button>
       )}
@@ -56,11 +54,9 @@ export function SidebarThemeSwitcher({ className }: { className?: string }) {
 
   if (!mounted) return null;
   return (
-    <SidebarMenuButton
-      onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-      className={className}>
-      {theme === 'light' ? <Sun className="size-5" /> : <Moon className="size-5" />}
-      <span>{theme === 'light' ? 'Light' : 'Dark'}</span>
+    <SidebarMenuButton onClick={() => setTheme(theme === "light" ? "dark" : "light")} className={className}>
+      {theme === "light" ? <Sun className="size-5" /> : <Moon className="size-5" />}
+      <span>{theme === "light" ? "Light" : "Dark"}</span>
     </SidebarMenuButton>
   );
 }

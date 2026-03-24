@@ -3,7 +3,7 @@ const nextConfig = {
   output: 'standalone',
   turbopack: {},
   images: {
-    remotePatterns: [{ protocol: 'https', hostname: 'nextui.org' }],
+    remotePatterns: [],
   },
   headers: async () => [
     {

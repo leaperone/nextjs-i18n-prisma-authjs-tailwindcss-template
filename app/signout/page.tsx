@@ -1,24 +1,24 @@
 import { signOut } from "@/auth";
-import { Button, Card, CardBody, CardHeader } from "@/lib/heroui";
+import { Button, Card } from "@/lib/heroui";
 
 const SignoutPage = async () => {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background">
       <Card className="w-full max-w-md">
-        <CardHeader className="flex flex-col items-center pb-0">
+        <Card.Header className="flex flex-col items-center pb-0">
           <h2 className="font-bold text-2xl">Are you sure to sign out?</h2>
-        </CardHeader>
-        <CardBody>
+        </Card.Header>
+        <Card.Content>
           <form
             action={async () => {
               "use server";
               await signOut({ redirectTo: "/" });
             }}>
-            <Button type="submit" color="primary" fullWidth>
+            <Button type="submit" variant="primary" className="w-full">
               Sign out
             </Button>
           </form>
-        </CardBody>
+        </Card.Content>
       </Card>
     </div>
   );

@@ -1,56 +1,44 @@
-'use client';
+"use client";
 
-import {
-  Navbar,
-  NavbarBrand,
-  NavbarContent,
-  NavbarItem,
-  NavbarMenuToggle,
-  NavbarMenu,
-  NavbarMenuItem,
-  Button,
-  Dropdown,
-  DropdownTrigger,
-  DropdownMenu,
-  DropdownItem,
-  Link,
-} from '@heroui/react';
-import { LayoutDashboard, FileText, Wrench, MenuIcon, ChevronDown } from 'lucide-react';
-import React, { useState } from 'react';
+import { Button, Dropdown } from "@heroui/react";
+import { ChevronDown, FileText, LayoutDashboard, Menu, Wrench, X } from "lucide-react";
+import Link from "next/link";
+import type React from "react";
+import { useState } from "react";
 
-import { BrandLogo, BrandName } from '@/components/Brand';
-import { ThemeSwitcher } from '@/components/ThemeSwitcher';
+import { BrandLogo, BrandName } from "@/components/Brand";
+import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 
 const dashboardItems: { title: string; icon: React.ElementType; href: string; description: string }[] = [
   {
-    title: 'Tools',
+    title: "Tools",
     icon: Wrench,
-    href: '/tools',
-    description: 'Your best toolbox',
+    href: "/tools",
+    description: "Your best toolbox",
   },
   {
-    title: 'Docs',
+    title: "Docs",
     icon: FileText,
-    href: '/docs',
-    description: 'Project documentation and guides',
+    href: "/docs",
+    description: "Project documentation and guides",
   },
 ];
 
 const menuItems = [
   {
-    title: 'Dashboard',
+    title: "Dashboard",
     icon: LayoutDashboard,
-    href: '/dashboard',
+    href: "/dashboard",
   },
   {
-    title: 'Tools',
+    title: "Tools",
     icon: Wrench,
-    href: '/tools',
+    href: "/tools",
   },
   {
-    title: 'Docs',
+    title: "Docs",
     icon: FileText,
-    href: '/docs',
+    href: "/docs",
   },
 ];
 
@@ -58,147 +46,114 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <Navbar
-      maxWidth="full"
-      height="2.5rem"
-      onMenuOpenChange={setIsMenuOpen}>
-      <NavbarContent>
-        <NavbarMenuToggle
-          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
-          className="sm:hidden"
-        />
-        <NavbarBrand>
-          <Link href="/">
+    <nav className="sticky top-0 z-40 w-full border-border border-b bg-background/70 backdrop-blur-lg">
+      <header className="mx-auto flex h-10 items-center justify-between px-4">
+        {/* Left: Mobile toggle + Brand */}
+        <div className="flex items-center gap-3">
+          <button
+            type="button"
+            className="sm:hidden"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMenuOpen}>
+            {isMenuOpen ? <X className="size-5" /> : <Menu className="size-5" />}
+          </button>
+          <Link href="/" className="flex items-center gap-1">
             <BrandLogo />
             <BrandName className="hidden sm:block" />
           </Link>
-        </NavbarBrand>
-      </NavbarContent>
-      <NavbarContent
-        className="mx-auto hidden w-fit justify-between gap-6 sm:flex"
-        justify="center">
-        <NavbarItem>
-          <Link
-            color="foreground"
-            href="/dashboard"
-            className="flex items-center gap-2 text-xs">
+        </div>
+
+        {/* Center: Desktop navigation */}
+        <div className="hidden items-center gap-6 sm:flex">
+          <Link href="/dashboard" className="flex items-center gap-2 text-foreground text-xs hover:text-foreground/80">
             <LayoutDashboard className="size-4" />
             Dashboard
           </Link>
-        </NavbarItem>
 
-        <NavbarItem>
           <Dropdown>
-            <DropdownTrigger>
-              <Button
-                disableRipple
-                variant="light"
-                size="sm"
-                endContent={<ChevronDown className="size-4" />}
-                startContent={<MenuIcon className="size-4" />}>
+            <Dropdown.Trigger>
+              <Button variant="ghost" size="sm">
+                <Menu className="size-4" />
                 Features
+                <ChevronDown className="size-4" />
               </Button>
-            </DropdownTrigger>
-            <DropdownMenu
-              aria-label="Features menu"
-              itemClasses={{
-                base: 'gap-4 text-foreground text-lg font-bold',
-                description: 'text-foreground/50 text-xs font-light',
-              }}>
-              {dashboardItems.map((item) => (
-                <DropdownItem
-                  key={item.title}
-                  description={item.description}
-                  startContent={<item.icon className="text-inherit" />}
-                  as={Link}
-                  href={item.href}>
-                  {item.title}
-                </DropdownItem>
-              ))}
-            </DropdownMenu>
+            </Dropdown.Trigger>
+            <Dropdown.Popover>
+              <Dropdown.Menu aria-label="Features menu">
+                {dashboardItems.map((item) => (
+                  <Dropdown.Item key={item.title} id={item.title} textValue={item.title} href={item.href}>
+                    <item.icon className="size-4" />
+                    <span className="font-bold">{item.title}</span>
+                  </Dropdown.Item>
+                ))}
+              </Dropdown.Menu>
+            </Dropdown.Popover>
           </Dropdown>
-        </NavbarItem>
 
-        <NavbarItem>
-          <Link
-            color="foreground"
-            href="/about"
-            className="flex items-center gap-2 text-xs">
+          <Link href="/about" className="flex items-center gap-2 text-foreground text-xs hover:text-foreground/80">
             <FileText className="size-4" />
             About
           </Link>
-        </NavbarItem>
-      </NavbarContent>
-      <NavbarContent justify="end">
-        <ThemeSwitcher
-          isBlur={false}
-          className="hidden sm:block"
-        />
+        </div>
 
-        <NavbarItem>
+        {/* Right: Theme + Sign in */}
+        <div className="flex items-center gap-2">
+          <ThemeSwitcher isBlur={false} className="hidden sm:block" />
           <LoginUserBtn />
-        </NavbarItem>
-      </NavbarContent>
+        </div>
+      </header>
 
-      <NavbarMenu>
-        {menuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item.title}-${index}`}>
-            <Link
-              className="w-full"
-              color="foreground"
-              href={item.href}
-              size="lg">
-              <div className="flex items-center gap-2">
-                <item.icon className="size-5" />
-                <span>{item.title}</span>
-              </div>
-            </Link>
-          </NavbarMenuItem>
-        ))}
-        <NavbarMenuItem>
-          <Link
-            className="w-full"
-            color="foreground"
-            href="/about"
-            size="lg">
-            <div className="flex items-center gap-2">
-              <FileText className="size-5" />
-              <span>About</span>
-            </div>
-          </Link>
-        </NavbarMenuItem>
-        <NavbarMenuItem>
-          <LoginUserBtnMobile />
-        </NavbarMenuItem>
-        <NavbarMenuItem>
-          <ThemeSwitcher
-            isBlur={false}
-            className="w-full"
-          />
-        </NavbarMenuItem>
-      </NavbarMenu>
-    </Navbar>
+      {/* Mobile menu */}
+      {isMenuOpen && (
+        <div className="border-border border-t sm:hidden">
+          <ul className="flex flex-col gap-2 p-4">
+            {menuItems.map((item) => (
+              <li key={item.title}>
+                <Link
+                  className="flex w-full items-center gap-2 rounded-md px-3 py-2 text-foreground hover:bg-muted"
+                  href={item.href}
+                  onClick={() => setIsMenuOpen(false)}>
+                  <item.icon className="size-5" />
+                  <span>{item.title}</span>
+                </Link>
+              </li>
+            ))}
+            <li>
+              <Link
+                className="flex w-full items-center gap-2 rounded-md px-3 py-2 text-foreground hover:bg-muted"
+                href="/about"
+                onClick={() => setIsMenuOpen(false)}>
+                <FileText className="size-5" />
+                <span>About</span>
+              </Link>
+            </li>
+            <li>
+              <LoginUserBtnMobile />
+            </li>
+            <li>
+              <ThemeSwitcher isBlur={false} className="w-full" />
+            </li>
+          </ul>
+        </div>
+      )}
+    </nav>
   );
 }
 
 function LoginUserBtn() {
   return (
-    <Button
-      as={Link}
-      href="/signin"
-      size="sm">
-      Sign In
-    </Button>
+    <Link href="/signin">
+      <Button size="sm">Sign In</Button>
+    </Link>
   );
 }
 
 function LoginUserBtnMobile() {
   return (
     <Link
-      className="w-full"
-      color="primary"
-      href="/signin"
-      size="lg">
+      className="flex w-full items-center gap-2 rounded-md px-3 py-2 text-lg text-primary hover:bg-muted"
+      href="/signin">
       Sign In
     </Link>
   );

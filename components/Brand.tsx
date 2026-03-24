@@ -1,10 +1,11 @@
-import { cn, Image } from "@/lib/heroui";
+import { cn } from "@/lib/utils";
 
 export const BrandLogo = () => (
   <div className="flex size-10 items-center rounded-full bg-white dark:bg-black">
-    <Image
+    <img
       src="https://2someone-web-static.s3.bitiful.net/2024/06/5f2b5bfcae6e587ab4e8bc42e4e5bc96.avif"
       alt="2SOMEren Logo"
+      className="rounded-full"
     />
   </div>
 );

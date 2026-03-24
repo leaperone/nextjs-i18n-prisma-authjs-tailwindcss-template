@@ -23,19 +23,21 @@ export default function RootLayout({
     <Providers>
       <div className="flex h-screen w-screen items-center justify-center bg-gradient-to-br from-rose-400 via-fuchsia-500 to-indigo-500 p-2 sm:p-4 lg:p-8 dark:from-rose-900 dark:via-fuchsia-900 dark:to-indigo-900">
         <div className="flex w-full max-w-sm flex-col gap-4">
-          <div className="flex w-full max-w-sm flex-col gap-4 rounded-large bg-background/60 px-8 pt-6 pb-10 shadow-small backdrop-blur-md backdrop-saturate-150 dark:bg-default-100/50">
+          <div className="flex w-full max-w-sm flex-col gap-4 rounded-lg bg-background/60 px-8 pt-6 pb-10 shadow-sm backdrop-blur-md backdrop-saturate-150 dark:bg-muted/50">
             <Suspense>{children}</Suspense>
           </div>
-          <div className="flex w-full max-w-sm flex-row justify-between gap-4 rounded-large bg-background/60 px-8 py-4 shadow-small backdrop-blur-md backdrop-saturate-150 dark:bg-default-100/50">
+          <div className="flex w-full max-w-sm flex-row justify-between gap-4 rounded-lg bg-background/60 px-8 py-4 shadow-sm backdrop-blur-md backdrop-saturate-150 dark:bg-muted/50">
             <Link href="/">
-              <Button size="sm" isIconOnly className={buttonClasses}>
+              <Button size="sm" className={buttonClasses}>
                 <HomeIcon />
               </Button>
             </Link>
 
-            <Button as="a" href="https://doc.2some.one" size="sm" className={buttonClasses} isIconOnly>
-              <FileTextIcon />
-            </Button>
+            <a href="https://doc.2some.one">
+              <Button size="sm" className={buttonClasses}>
+                <FileTextIcon />
+              </Button>
+            </a>
 
             <ThemeSwitcher />
           </div>
