@@ -1,12 +1,8 @@
 import { cn } from "@/lib/utils";
 
 export const BrandLogo = () => (
-  <div className="flex size-10 items-center rounded-full bg-white dark:bg-black">
-    <img
-      src="https://2someone-web-static.s3.bitiful.net/2024/06/5f2b5bfcae6e587ab4e8bc42e4e5bc96.avif"
-      alt="2SOMEren Logo"
-      className="rounded-full"
-    />
+  <div className="flex size-10 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-purple-600">
+    <span className="font-bold text-sm text-white">T</span>
   </div>
 );
 
@@ -17,7 +13,7 @@ export const BrandName = ({ className }: { className?: string }) => {
         "bg-gradient-to-br from-blue-300 to-pink-600 bg-clip-text font-semibold text-transparent dark:from-blue-400 dark:to-pink-400",
         className,
       )}>
-      LEAPERone Template
+      My Template
     </span>
   );
 };

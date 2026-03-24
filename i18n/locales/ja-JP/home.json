@@ -1,34 +1,30 @@
 {
   "hero": {
     "title": "すべてのソーシャルメディアプラットフォームで利用可能",
-    "subtitle": "世界中のコンテンツクリエイターに信頼されています",
-    "beta": "ベータ期間中は全て無料でご利用いただけます。",
+    "subtitle": "世界中の開発者に信頼されています",
+    "beta": "ベータ期間中は無料でご利用いただけます。",
     "description": "{{platform}}で、あなたのクリエイティブ活動を支援する🎯オールインワン🚀ツール📝",
     "platform": "あらゆるプラットフォーム",
-    "cta": "プロフィールを設定する"
+    "cta": "はじめる"
   },
   "platforms": {
     "followers": "{{followers}}",
     "connect": "{{platform}}で{{followers}}のフォロワーと繋がり、急速に成長中。"
   },
   "footer": {
-    "slogan": "人々、ライブ配信、生活",
-    "copyright": "© 2024 LEAPERone Inc. All rights reserved.",
+    "slogan": "素晴らしいものを作ろう。",
+    "copyright": "© {{year}} Your Company. All rights reserved.",
     "sections": {
       "services": "サービス",
-      "support": "サポート", 
+      "support": "サポート",
       "aboutus": "会社概要",
       "legal": "法的情報"
     },
     "navigation": {
-      "services": {
-        "bubblebox": "BubbleBox",
-        "multipost": "MultiPost"
-      },
+      "services": {},
       "support": {
         "pricing": "料金プラン",
-        "userManual": "ユーザーマニュアル（ドキュメント）",
-        "devDocs": "LEAPERone 開発ドキュメント"
+        "userManual": "ドキュメント"
       },
       "aboutUs": {
         "team": "チーム紹介"

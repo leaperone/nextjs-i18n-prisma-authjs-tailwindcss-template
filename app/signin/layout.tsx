@@ -8,8 +8,8 @@ import { Button } from "@/lib/heroui";
 import { Providers } from "../providers";
 
 export const metadata: Metadata = {
-  title: "2SOMEone",
-  description: "All in one.",
+  title: "Sign In",
+  description: "Sign in to your account.",
 };
 
 export default function RootLayout({
@@ -33,11 +33,11 @@ export default function RootLayout({
               </Button>
             </Link>
 
-            <a href="https://doc.2some.one">
+            <Link href="/docs">
               <Button size="sm" className={buttonClasses}>
                 <FileTextIcon />
               </Button>
-            </a>
+            </Link>
 
             <ThemeSwitcher />
           </div>

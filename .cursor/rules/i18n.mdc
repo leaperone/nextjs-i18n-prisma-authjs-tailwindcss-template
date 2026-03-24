@@ -1,6 +1,6 @@
 ---
 description: i18n, 翻译, 国际化
-globs: 
+globs:
 alwaysApply: false
 ---
 Internationalization (i18n) Guidelines:
@@ -26,37 +26,35 @@ const { t } = useTranslation('install');
 Message Format:
 ```json
 "footer": {
-    "slogan": "简化你的社交媒体工作流程",
-    "copyright": "© 2024 LEAPERone Inc. 保留所有权利",
+    "slogan": "Build something amazing.",
+    "copyright": "© {{year}} Your Company. All rights reserved.",
     "sections": {
-      "services": "服务",
-      "support": "支持",
-      "aboutus": "关于我们",
-      "legal": "法律条款"
+      "services": "Services",
+      "support": "Support",
+      "aboutus": "About Us",
+      "legal": "Legal"
     },
     "navigation": {
       "services": {},
       "support": {
-        "pricing": "定价",
-        "userManual": "用户手册（文档）",
-        "devDocs": "LEAPERone 开发文档"
+        "pricing": "Pricing",
+        "userManual": "Documentation"
       },
       "aboutUs": {
-        "team": "我们的团队"
+        "team": "Our Team"
       },
       "legal": {
-        "privacy": "隐私政策",
-        "terms": "服务条款"
+        "privacy": "Privacy Policy",
+        "terms": "Terms of Service"
       }
     }
   },
 ```
 
 Implementation:
-- Use `chrome.i18n.getMessage('extensionDisplayName')` for all user-facing text
+- Use i18n translation functions for all user-facing text
 - Never hardcode text strings in components
 - Handle RTL languages with appropriate CSS
-- Set default_locale in manifest.json
 - Support fallback locales
 
 Best Practices:
@@ -66,16 +64,3 @@ Best Practices:
 - Handle pluralization properly
 - Consider cultural differences in formatting dates, numbers, and currencies
 - Test UI with different language lengths
-
-Code Examples:
-```typescript
-// Component usage
-const message = chrome.i18n.getMessage("WELCOME_MESSAGE", [username]);
-
-// Manifest configuration
-{
-  "default_locale": "en",
-  "name": "__MSG_extension_name__",
-  "description": "__MSG_extension_description__"
-}
-```
