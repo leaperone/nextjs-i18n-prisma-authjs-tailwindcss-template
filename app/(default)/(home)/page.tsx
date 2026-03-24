@@ -3,7 +3,7 @@ import FlipCard from "@/components/animata/card/flip-card";
 import ScrollingBanner from "@/components/scrolling-banner";
 import Marquee from "@/components/ui/marquee";
 import { createTranslation } from "@/i18n/server";
-import { Avatar, Card } from "@/lib/heroui";
+import { Avatar, AvatarFallback, AvatarImage, Card, CardContent, CardHeader } from "@/lib/heroui";
 import HeroSection from "./hero-section";
 
 export default async function HomePage() {
@@ -114,7 +114,7 @@ const ProductShowcase = async () => {
           {PRODUCTS.map((product) => (
             <a key={product.name} href={product.href} target="_blank" rel="noopener noreferrer" className="group">
               <Card className="cursor-pointer border shadow-none transition-all duration-300 hover:scale-[1.02]">
-                <Card.Header className="pb-2">
+                <CardHeader className="pb-2">
                   <div className="flex items-center gap-3">
                     <div className={`rounded-lg bg-gradient-to-r p-2.5 ${product.color} text-white`}>
                       <product.icon className="size-5" />
@@ -124,8 +124,8 @@ const ProductShowcase = async () => {
                       <p className="text-muted-foreground text-xs">{product.description}</p>
                     </div>
                   </div>
-                </Card.Header>
-                <Card.Content className="pt-0">
+                </CardHeader>
+                <CardContent className="pt-0">
                   <div className="space-y-1.5">
                     {product.features.map((feature) => (
                       <div key={feature} className="flex items-center gap-2">
@@ -137,7 +137,7 @@ const ProductShowcase = async () => {
                   <div className="mt-3 flex justify-end">
                     <ExternalLink className="size-3.5 text-muted-foreground transition-colors group-hover:text-primary" />
                   </div>
-                </Card.Content>
+                </CardContent>
               </Card>
             </a>
           ))}
@@ -174,7 +174,7 @@ const UserRecommendations = async () => {
       name: "Mike Zhang",
       role: "Content Creator",
       content:
-        "As a host of storytelling content, I often felt overwhelmed by sorting audience submissions individually. BubbleBox's collection and organization tools allow me to quickly categorize posts, making it easy to present each story during streams. Viewers are excited to submit content freely, which has greatly improved the interactivity and involvement in my show.",
+        "As a host of storytelling content, I often felt overwhelmed by sorting audience submissions individually. BubbleBox's collection and organization tools allow me to quickly categorize posts, making it easy to present each story during streams.",
     },
     {
       id: 3,
@@ -182,7 +182,7 @@ const UserRecommendations = async () => {
       name: "Emily Wang",
       role: "Interactive Streamer",
       content:
-        "BubbleBox's anonymous submission feature has made my livestreams more inclusive and engaging. My audience is diverse, and many viewers want to share personal stories while keeping their privacy. Since using BubbleBox, audience engagement has increased significantly, with more posts than ever, and the show has developed a warmer, more connected atmosphere.",
+        "BubbleBox's anonymous submission feature has made my livestreams more inclusive and engaging. My audience is diverse, and many viewers want to share personal stories while keeping their privacy.",
     },
     {
       id: 4,
@@ -190,7 +190,7 @@ const UserRecommendations = async () => {
       name: "David Liu",
       role: "Live Host",
       content:
-        "As an interactive host, I encourage my audience to express themselves during streams. Previously, organizing submissions manually was tedious, but BubbleBox's auto-categorization feature saves me tons of time. What surprised me is how well the display is optimized for OBS—large, clear fonts make viewers feel valued, and the quality of my content has noticeably improved.",
+        "As an interactive host, I encourage my audience to express themselves during streams. Previously, organizing submissions manually was tedious, but BubbleBox's auto-categorization feature saves me tons of time.",
     },
     {
       id: 5,
@@ -198,7 +198,7 @@ const UserRecommendations = async () => {
       name: "Sophie Lin",
       role: "Community Manager",
       content:
-        "Receiving audience submissions is part of my show, and BubbleBox's efficient design is exactly what I needed. Both the categorization and display are super convenient, letting me focus on presenting content without being bogged down by managing posts. Viewers love the seamless interaction, saying it makes them feel involved, and the entire atmosphere has become more vibrant.",
+        "Receiving audience submissions is part of my show, and BubbleBox's efficient design is exactly what I needed. Both the categorization and display are super convenient.",
     },
     {
       id: 6,
@@ -206,7 +206,7 @@ const UserRecommendations = async () => {
       name: "Alex Wu",
       role: "Content Creator",
       content:
-        "Every submission I receive is a form of connection with my viewers, and manual sorting wasn't working. BubbleBox has automated the sorting and display process, keeping my streams smooth and well-paced. Viewers are thrilled by the real-time interaction and have started participating even more, creating a lively, welcoming stream environment.",
+        "Every submission I receive is a form of connection with my viewers, and manual sorting wasn't working. BubbleBox has automated the sorting and display process, keeping my streams smooth.",
     },
     {
       id: 7,
@@ -214,7 +214,7 @@ const UserRecommendations = async () => {
       name: "Rachel Chen",
       role: "Live Streamer",
       content:
-        "BubbleBox has brought a more positive and interactive vibe to my channel. Viewers enjoy the anonymous submission feature and are more comfortable sharing. Every submission gets categorized and displayed quickly, so everyone feels heard. This easy involvement format has brought in tons of great feedback, with audience engagement rising significantly.",
+        "BubbleBox has brought a more positive and interactive vibe to my channel. Viewers enjoy the anonymous submission feature and are more comfortable sharing.",
     },
     {
       id: 8,
@@ -222,7 +222,7 @@ const UserRecommendations = async () => {
       name: "Kevin Zhao",
       role: "Interactive Host",
       content:
-        "Managing viewer submissions has always been challenging, but BubbleBox has solved this for me. Its straightforward interface allows quick categorization, saving me lots of time. Viewers find the submission link easy to use, and I'm able to interact instantly with everyone during the stream, leading to much higher viewer activity than before.",
+        "Managing viewer submissions has always been challenging, but BubbleBox has solved this for me. Its straightforward interface allows quick categorization, saving me lots of time.",
     },
     {
       id: 9,
@@ -230,7 +230,7 @@ const UserRecommendations = async () => {
       name: "Lisa Tang",
       role: "Community Host",
       content:
-        "Each stream requires handling various types of viewer submissions, and BubbleBox has provided me with a structured way to manage them. Using its collection and categorization features, I can efficiently organize viewer content, keeping the stream interactive and smooth. The audience loves the interaction, not only improving satisfaction but also bringing in more participants.",
+        "Each stream requires handling various types of viewer submissions, and BubbleBox has provided me with a structured way to manage them.",
     },
     {
       id: 10,
@@ -238,7 +238,7 @@ const UserRecommendations = async () => {
       name: "Tom Yang",
       role: "Live Broadcaster",
       content:
-        "I have a high level of audience interaction, and before, I had to manually collect and organize submissions, sometimes missing some. BubbleBox's submission collection and auto-categorization have made things much smoother, and viewers are enjoying the more structured experience. Submissions are clearly displayed on the stream screen, and people say it makes them feel part of the action, bringing even more energy to the channel.",
+        "I have a high level of audience interaction, and before, I had to manually collect and organize submissions, sometimes missing some. BubbleBox's submission collection and auto-categorization have made things much smoother.",
     },
   ];
 
@@ -254,8 +254,8 @@ const UserRecommendations = async () => {
             <div key={item.id} className="mx-4 w-[350px] rounded-xl border bg-card p-6 shadow-xs">
               <div className="flex items-center gap-4">
                 <Avatar className="size-12">
-                  <Avatar.Image src={item.avatar} alt={item.name} />
-                  <Avatar.Fallback>{item.name.slice(0, 2)}</Avatar.Fallback>
+                  <AvatarImage src={item.avatar} alt={item.name} />
+                  <AvatarFallback>{item.name.slice(0, 2)}</AvatarFallback>
                 </Avatar>
                 <div>
                   <h3 className="font-semibold">{item.name}</h3>

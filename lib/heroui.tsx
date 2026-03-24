@@ -1,3 +1,15 @@
 "use client";
 
-export { Avatar, Button, Card, Chip, ScrollShadow, Separator } from "@heroui/react";
+export {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+  Button,
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  Chip,
+  ScrollShadow,
+  Separator,
+} from "@heroui/react";

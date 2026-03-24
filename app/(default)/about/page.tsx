@@ -1,5 +1,5 @@
 import { Award, Heart, Mail, Phone, Target, Users } from "lucide-react";
-import { Avatar, Button, Card, Chip } from "@/lib/heroui";
+import { Avatar, AvatarFallback, AvatarImage, Button, Card, CardContent, Chip } from "@/lib/heroui";
 
 export default function AboutPage() {
   const teamMembers = [
@@ -79,7 +79,7 @@ export default function AboutPage() {
       {/* 使命和愿景 */}
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         <Card className="border shadow-none">
-          <Card.Content className="p-6">
+          <CardContent className="p-6">
             <div className="flex items-start gap-4">
               <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/10">
                 <Target className="size-6 text-primary" />
@@ -91,11 +91,11 @@ export default function AboutPage() {
                 </p>
               </div>
             </div>
-          </Card.Content>
+          </CardContent>
         </Card>
 
         <Card className="border shadow-none">
-          <Card.Content className="p-6">
+          <CardContent className="p-6">
             <div className="flex items-start gap-4">
               <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/10">
                 <Award className="size-6 text-primary" />
@@ -107,7 +107,7 @@ export default function AboutPage() {
                 </p>
               </div>
             </div>
-          </Card.Content>
+          </CardContent>
         </Card>
       </div>
 
@@ -117,7 +117,7 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {values.map((value) => (
             <Card key={value.title} className="border shadow-none">
-              <Card.Content className="p-6">
+              <CardContent className="p-6">
                 <div className="flex items-start gap-4">
                   <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
                     <value.icon className="size-5 text-primary" />
@@ -127,7 +127,7 @@ export default function AboutPage() {
                     <p className="text-muted-foreground text-sm leading-relaxed">{value.description}</p>
                   </div>
                 </div>
-              </Card.Content>
+              </CardContent>
             </Card>
           ))}
         </div>
@@ -139,12 +139,12 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {teamMembers.map((member) => (
             <Card key={member.name} className="border shadow-none">
-              <Card.Content className="p-6">
+              <CardContent className="p-6">
                 <div className="space-y-4">
                   <div className="flex items-center gap-4">
                     <Avatar className="size-16 shrink-0">
-                      <Avatar.Image src={member.avatar} alt={member.name} />
-                      <Avatar.Fallback>{member.name.slice(0, 2)}</Avatar.Fallback>
+                      <AvatarImage src={member.avatar} alt={member.name} />
+                      <AvatarFallback>{member.name.slice(0, 2)}</AvatarFallback>
                     </Avatar>
                     <div className="space-y-2">
                       <h3 className="font-semibold text-lg">{member.name}</h3>
@@ -155,7 +155,7 @@ export default function AboutPage() {
                   </div>
                   <p className="text-muted-foreground text-sm leading-relaxed">{member.description}</p>
                 </div>
-              </Card.Content>
+              </CardContent>
             </Card>
           ))}
         </div>

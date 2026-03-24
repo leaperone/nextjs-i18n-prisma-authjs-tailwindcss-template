@@ -1,5 +1,14 @@
 "use client";
-import { Label, ListBox, Select } from "@heroui/react";
+import {
+  Label,
+  ListBox,
+  ListBoxItem,
+  Select,
+  SelectIndicator,
+  SelectPopover,
+  SelectTrigger,
+  SelectValue,
+} from "@heroui/react";
 import { useTranslation } from "@/i18n/client";
 import { languages } from "@/i18n/settings";
 import { switchLocaleAction } from "@/i18n/switch-locale";
@@ -18,19 +27,19 @@ export default function LanguageSwitcher() {
       defaultValue={i18n.resolvedLanguage ?? null}
       onChange={(value) => handleLocaleChange(value as string | null)}>
       <Label className="sr-only">Select language</Label>
-      <Select.Trigger>
-        <Select.Value />
-        <Select.Indicator />
-      </Select.Trigger>
-      <Select.Popover>
+      <SelectTrigger>
+        <SelectValue />
+        <SelectIndicator />
+      </SelectTrigger>
+      <SelectPopover>
         <ListBox>
           {languages.map((language) => (
-            <ListBox.Item key={language.value} id={language.value} textValue={language.label}>
+            <ListBoxItem key={language.value} id={language.value} textValue={language.label}>
               {language.label}
-            </ListBox.Item>
+            </ListBoxItem>
           ))}
         </ListBox>
-      </Select.Popover>
+      </SelectPopover>
     </Select>
   );
 }

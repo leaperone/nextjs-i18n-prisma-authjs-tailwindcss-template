@@ -1,14 +1,14 @@
 import { signOut } from "@/auth";
-import { Button, Card } from "@/lib/heroui";
+import { Button, Card, CardContent, CardHeader } from "@/lib/heroui";
 
 const SignoutPage = async () => {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background">
       <Card className="w-full max-w-md">
-        <Card.Header className="flex flex-col items-center pb-0">
+        <CardHeader className="flex flex-col items-center pb-0">
           <h2 className="font-bold text-2xl">Are you sure to sign out?</h2>
-        </Card.Header>
-        <Card.Content>
+        </CardHeader>
+        <CardContent>
           <form
             action={async () => {
               "use server";
@@ -18,7 +18,7 @@ const SignoutPage = async () => {
               Sign out
             </Button>
           </form>
-        </Card.Content>
+        </CardContent>
       </Card>
     </div>
   );

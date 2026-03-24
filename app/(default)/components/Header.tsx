@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Dropdown } from "@heroui/react";
+import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownPopover, DropdownTrigger } from "@heroui/react";
 import { ChevronDown, FileText, LayoutDashboard, Menu, Wrench, X } from "lucide-react";
 import Link from "next/link";
 import type React from "react";
@@ -72,23 +72,21 @@ export default function Header() {
           </Link>
 
           <Dropdown>
-            <Dropdown.Trigger>
-              <Button variant="ghost" size="sm">
-                <Menu className="size-4" />
-                Features
-                <ChevronDown className="size-4" />
-              </Button>
-            </Dropdown.Trigger>
-            <Dropdown.Popover>
-              <Dropdown.Menu aria-label="Features menu">
+            <DropdownTrigger className="flex cursor-pointer items-center gap-1 rounded-md px-2 py-1 text-foreground text-xs hover:bg-muted">
+              <Menu className="size-4" />
+              Features
+              <ChevronDown className="size-4" />
+            </DropdownTrigger>
+            <DropdownPopover>
+              <DropdownMenu aria-label="Features menu">
                 {dashboardItems.map((item) => (
-                  <Dropdown.Item key={item.title} id={item.title} textValue={item.title} href={item.href}>
+                  <DropdownItem key={item.title} id={item.title} textValue={item.title} href={item.href}>
                     <item.icon className="size-4" />
                     <span className="font-bold">{item.title}</span>
-                  </Dropdown.Item>
+                  </DropdownItem>
                 ))}
-              </Dropdown.Menu>
-            </Dropdown.Popover>
+              </DropdownMenu>
+            </DropdownPopover>
           </Dropdown>
 
           <Link href="/about" className="flex items-center gap-2 text-foreground text-xs hover:text-foreground/80">

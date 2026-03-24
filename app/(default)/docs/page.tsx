@@ -1,5 +1,5 @@
 import { BookOpen, Code, Settings, Users } from "lucide-react";
-import { Card } from "@/lib/heroui";
+import { Card, CardContent, CardHeader } from "@/lib/heroui";
 
 export default function DocsPage() {
   const docs = [
@@ -39,16 +39,16 @@ export default function DocsPage() {
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {docs.map((doc) => (
           <Card key={doc.title} className="transition-shadow hover:shadow-lg">
-            <Card.Header className="flex gap-3">
+            <CardHeader className="flex gap-3">
               <doc.icon className="size-6 text-primary" />
               <div className="flex flex-col">
                 <p className="font-semibold text-lg">{doc.title}</p>
                 <p className="text-muted-foreground text-sm">{doc.description}</p>
               </div>
-            </Card.Header>
-            <Card.Content>
+            </CardHeader>
+            <CardContent>
               <p className="text-muted-foreground text-sm">查看 {doc.title.toLowerCase()}</p>
-            </Card.Content>
+            </CardContent>
           </Card>
         ))}
       </div>
